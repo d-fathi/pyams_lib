@@ -14,6 +14,7 @@ def getAllSignalsParams(circuit)->dict:
         }
     return result
 
+
 def listSignalsParams(circuit)->list:
     """
     Extracts all signal and parameter names from elements within a given circuit.

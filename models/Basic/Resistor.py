@@ -2,7 +2,7 @@
 # Name:        Resistor
 # Author:      d.fathi
 # Created:     20/03/2015
-# Modified:    01/04/2020
+# Modified:    19/03/2025
 # Copyright:   (c) PyAMS
 # Licence:     free  "GPLv3"
 #-------------------------------------------------------------------------------
