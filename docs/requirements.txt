@@ -1,0 +1,6 @@
+sphinx
+sphinx_rtd_theme
+sphinx_panels
+sphinx_math_dollar
+sphinx.ext.autodoc
+sphinx.ext.napoleon

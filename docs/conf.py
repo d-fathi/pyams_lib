@@ -36,8 +36,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.autosectionlabel',
               'sphinx_rtd_theme',
                'sphinx_panels',
-              'sphinx_math_dollar',
-              'rst2pdf.pdfbuilder']
+              'sphinx_math_dollar']
 
 mathjax_config = {
     'tex2jax': {
