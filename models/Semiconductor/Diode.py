@@ -7,9 +7,9 @@
 # Licence:     free  "GPLv3"
 #-------------------------------------------------------------------------------
 
-from PyAMS import signal,model,param
-from electrical import voltage,current
-from std import explim
+from pyams_lib import signal,model,param
+from pyams_lib import voltage,current
+from pyams_lib import explim
 
 #Simple Diode-------------------------------------------------------------------
 class  Diode(model):

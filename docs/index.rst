@@ -28,7 +28,8 @@ What is `pyams_lib`?
 - Simulation of circuits in different modes of operation.
 - Visualization of simulation results using `matplotlib`.
 - Compatibility with Python 3+ and PyPy, working across Linux, Windows, and macOS.
-- pip install pyams-lib: `<https://pypi.org/project/pyams_lib/>`_
+- pip install pyams_lib: `<https://pypi.org/project/pyams_lib/>`_
+- PyAMS library (pyams_lib) documentation : `<https://pyams-lib.readthedocs.io/>`_
 - github project: `<https://github.com/d-fathi/pyams_lib/>`_
 
 .. panels::
@@ -93,7 +94,8 @@ Table of Contents
   Installation.rst
   Modeling.rst
   Simulation.rst
-  Symbols.rst
-  Elements.rst
+  Models.rst
+  Examples.rst
   Donate.rst
 .. End
+

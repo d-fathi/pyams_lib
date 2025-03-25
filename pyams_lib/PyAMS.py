@@ -127,6 +127,8 @@ class param:
     def __truediv__(self, other): return self.value / self._extract_value(other)
     def __rtruediv__(self, other): return self._extract_value(other) / self.value
     def __pow__(self, other): return self.value ** self._extract_value(other)
+    def __mod__(self, other): return self.value % self._extract_value(other)
+    def __rmod__(self, other): return self._extract_value(other) % self.value
     def __neg__(self): return -self.value
     def __pos__(self): return +self.value
     def __iadd__(self, other):
@@ -218,6 +220,8 @@ class signal:
     def __rmul__(self, other): return self.__mul__(other)
     def __truediv__(self, other): return self.value / self._extract_value(other)
     def __rtruediv__(self, other): return self._extract_value(other) / self.value
+    def __mod__(self, other): return self.value % self._extract_value(other)
+    def __rmod__(self, other): return self._extract_value(other) % self.value
     def __pow__(self, other): return self.value ** self._extract_value(other)
     def __neg__(self): return -self.value
     def __pos__(self): return +self.value
@@ -397,6 +401,7 @@ class circuit:
         self.nodes = ['0']  # List of nodes, starting with ground
         self.option=option(self)   # Option of circuit simulation
         self.control=control(self) # Control of circuit simulation
+        self.outputs=[]
 
     def addName(self, name: str, element: model):
         """
@@ -654,6 +659,18 @@ class circuit:
       plt.grid(True)
       plt.tight_layout()
       plt.show()
+
+
+    def print(self,*outputs):
+        '''
+         using for print result "outputs" one finish simulation.
+        '''
+        for i in range(len(outputs)):
+           if(type(outputs[i])==str):  #output it's node
+               output_voltage = self.x[self.nodes.index(outputs[i]) - 1]  # Get voltage at node outputs[i]
+               print(f"Output Voltage at node {outputs[i]}: {output_voltage:.2f} V")
+           else:  #it's signal or param or model(element)
+             print(outputs[i])
 
     def displayBarProgress(self,current, total, start_time):
         displayBar(current, total, start_time)
