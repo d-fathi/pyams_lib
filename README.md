@@ -29,6 +29,8 @@
   </a>
 </p>
 
+
+
 # PyAMS Library
 
 ## What is `pyams_lib`?
@@ -39,7 +41,7 @@
 - Simulation of circuits in different modes of operation.
 - Visualization of simulation results using `matplotlib`.
 - Compatibility with Python 3+ and PyPy, working across Linux, Windows, and macOS.
-- PyAMS library (pyams_lib) documentation   <a https://pyams-lib.readthedocs.io/">https://pyams-lib.readthedocs.io/</a>.
+- PyAMS library (pyams_lib) documentation   <a href="https://pyams-lib.readthedocs.io/">https://pyams-lib.readthedocs.io/</a>.
 
 ## Installation
 
