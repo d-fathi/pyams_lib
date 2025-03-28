@@ -11,7 +11,6 @@ To upgrade to the latest version::
 
     pip install --upgrade pyams_lib
 
-
 License
 =======
 

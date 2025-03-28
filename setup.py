@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pyams_lib", 
-    version="0.1.3", 
+    version="0.1.4", 
     author="Dhiabi.Fathi",
     author_email="dhiabi.fathi@gmail.com",
     description=" Python library for analog and mixed-signal simulation",

@@ -5,74 +5,80 @@
 Diode
 =====
 
-.. role:: red
-
-:red:`Symbol`
-
-.. figure:: Diode.svg
-
 :red:`Information`
+  
+A **diode** is a semiconductor device that **allows current to flow in one direction** while blocking it in the reverse direction. It follows the **Shockley diode equation**, which defines its current-voltage relationship:
 
-.. figure:: Diode.png
-   :scale: 50%
-   :align: center
+.. math::  
 
-The diode is nonlinear element and semiconductor device, described with the following equation $I(V)$:
+    I = I_{ss} \cdot \left( e^{\frac{V}{n V_t}} - 1 \right)
 
+Where:
 
-.. math::
+- $I$ is the current through the diode (Amperes)  
+- $V$ is the voltage across the diode (Volts)  
+- $I_{ss}$ is the **saturation current**, representing the small leakage current in reverse bias  
+- $V_t$ is the **thermal voltage**, which depends on temperature  
+- $n$ is the **ideality factor**, representing how closely the diode follows the ideal diode equation  
 
-    I  = I_{ss} (exp(\frac{V}{N.V_t})-1)
-
-where:
-
-* $V$ is voltage signal [V].
-* $I$ is current signal [A].
-* $I_{ss}$ is  reverse bias saturation current (or scale current).
-* $V_t$ is the thermal voltage [V].
-* $N$  is the ideality factor.
+Diodes are used in **rectification, signal demodulation, voltage regulation, and circuit protection**.
 
 :red:`Ports`
 
-* $p$ Positive terminal type electrical.
-* $n$ Negative terminal type electrical.
+- **p**: Anode (positive terminal)  
+- **n**: Cathode (negative terminal)  
 
-:red:`Symbol description`
+:red:`Model`
 
-.. csv-table::
-   :header: Field; Value
-   :widths: 10, 10
-   :delim: ;
+The **Diode model** implements a simple nonlinear diode.
 
-   Symbol.name; Diode
-   Symbol.file; Diode.sym
-   Symbol.directory; Semiconductor
-   Symbol.referance; ``D``
-   Model.name; ``Diode``
-   Model.file; Diode.py
+    A diode allows current to flow when forward biased and blocks it when reverse biased, following the Shockley equation.
 
-:red:`PyAMS model`
+    Attributes:
 
-The diode model in PyAMS is
+       *  V (signal): Input voltage signal across the diode, defined between nodes (p, n).  
+       *  I (signal): Output current signal through the diode, defined between nodes (p, n).  
+       *  Iss (param): Saturation current (default: **1.0e-15 A**).  
+       *  Vt (param): Thermal voltage (default: **0.025 V**).  
+       *  n (param): Ideality factor (default: **1**).  
 
-.. code-block:: py3
+    Methods:
 
-  from PyAMS import signal,model,param
-  from electrical import voltage,current
-  from standardFunction import explim
+        analog(): Defines the diode behavior using the Shockley equation:
 
-  #Simple diode-------------------------------------------------------------------
-  class  Diode(model):
-     def __init__(self, p, n):
-        #Signals declarations---------------------------------------------------
-        self.V = signal('in',voltage,p,n)
-        self.I = signal('out',current,p,n)
+.. code-block:: python
 
-        #Parameter declarations-------------------------------------------------
-        self.Iss=param(1.0e-15,'A','Saturation current')
-        self.Vt=param(0.025,'V','Thermal voltage')
-        self.n=param(1,' ','The ideality factor');
+    from pyams_lib import model, signal, param, voltage, current, explim
 
-     def analog(self):
-        #Mathematical equation between Id and Vd--------------------------------
-        self.I+=self.Iss*(explim(self.V/(self.n*self.Vt))-1)
+    class Diode(model):
+        """
+        Simple diode model following the Shockley equation.
+        """
+        def __init__(self, p, n):
+            # Signal declaration
+            self.V = signal('in', voltage, p, n)
+            self.I = signal('out', current, p, n)
+
+            # Parameter declaration
+            self.Iss = param(1.0e-15, 'A', 'Saturation current')
+            self.Vt = param(0.025, 'V', 'Thermal voltage')
+            self.n = param(1, ' ', 'The ideality factor')
+
+        def analog(self):
+            """Defines the diode’s current-voltage relationship"""
+            self.I += self.Iss * (explim(self.V / (self.n * self.Vt)) - 1)
+
+:red:`Command syntax`
+
+The **syntax** for defining a diode in a PyAMS simulation:
+
+.. code-block:: python
+
+    # Import the model
+    from models import Diode
+
+    # Dname: is the name of the diode instance
+    # p, n: The connection points in the circuit
+    Dname = Diode(p, n)
+
+
