@@ -1,15 +1,17 @@
-﻿#-------------------------------------------------------------------------------
-# Name:        Non linear resistance
-# Author:      PyAMS
-# Created:     20/08/2020
-# Modified:    24/03/2025
-# Copyright:   (c) PyAMS
-#--------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+# Name:        Van der pol Oscillator
+# Author:      D.fathi
+# Created:     29/03/2025
+# Copyright:   (c) PyAMS 2025
+# Licence:     free GPLv3
+#-------------------------------------------------------------------------------
+
+
 
 from pyams_lib import model, signal, param
 from pyams_lib import voltage, current
 
-# Nonlinear Resistance Model
+# Modeling Nonlinear Resistance  R=1/(µ*(V² - 1))---------------------------------
 class NonlinearResistance(model):
     """
     This class implements a Nonlinear Resistance model.
@@ -42,3 +44,30 @@ class NonlinearResistance(model):
 
 
 
+#Applicated Modele of Nonlinear Resistance to simulation Van der pol Oscillator
+
+from pyams_lib import circuit
+from models import CapacitorIc, InductorIc
+
+
+R1 = NonlinearResistance("Vout","0");
+C1 = CapacitorIc("Vout","0");
+L1 = InductorIc("Vout","0");
+
+
+C1.setParams("C=1F Ic=2V");
+L1.setParams("Ic=-6A L=1H ");
+
+# Create circuit and add elements
+circuit = circuit();
+circuit.addElements({'R1':R1,'C1':C1,'L1':L1})
+
+
+# Set outputs for plotting;
+circuit.setOutPuts("Vout");
+
+
+# Perform transient analysis
+circuit.analysis(mode="tran",start=0,stop=70,step=0.1);
+circuit.run();
+circuit.plot();

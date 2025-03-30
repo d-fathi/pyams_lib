@@ -13,4 +13,5 @@ This examples of simulation circuits by PyAMS library.
   Examples/RLCCircuit.rst
   Examples/Half_Wave_Rectification.rst
   Examples/Ful_wave_bridge_rectifier.rst
+  Examples/Van_der_pol_Oscillator.rst
 .. End

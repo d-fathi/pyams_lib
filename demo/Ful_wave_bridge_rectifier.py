@@ -28,6 +28,6 @@ circuit.addElements({"R1": R1, "Vin": Vin, "D1": D1})
 circuit.setOutPuts(Vin.V, "Vout")
 
 # Perform Transient Analysis
-circuit.analysis(mode="tran", start=0, stop=1, step=0.01)
+circuit.analysis(mode="tran", start=0, stop=10, step=0.001)
 circuit.run()
 circuit.plot()

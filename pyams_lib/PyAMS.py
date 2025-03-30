@@ -604,6 +604,8 @@ class circuit:
         '''
          using for plot result "outputs" one finish simulation.
         '''
+        self.tempOutputs=list(outputs)
+
         self.outputs=[]
         for i in range(len(outputs)):
             if(type(outputs[i])==str):
@@ -612,6 +614,24 @@ class circuit:
                 self.outputs+=[{'type':'signal','pos':outputs[i],'data':[]}]
             elif(type(outputs[i])==param):
                 self.outputs+=[{'type':'param','pos':outputs[i],'data':[]}]
+
+    def getOutPuts(self):
+        '''
+         using for get result "outputs" one finish simulation.
+        '''
+        data=[]
+
+        for i in range(1,len(self.outputs)):
+            data+=[self.outputs[i]['data']]
+        return data
+
+    def clearDataOutPuts(self):
+        '''
+         using for clear result or data "outputs".
+        '''
+        self.setOutPuts(*self.tempOutputs)
+
+
 
     def saveOutputs(self):
 
@@ -686,6 +706,9 @@ class circuit:
       # Initialize progress tracking
       start_time = starTime()
       global time
+
+      self.clearDataOutPuts();
+
 
       if self.analysis_['mode'] == 'tran':
         # Add the time variable to outputs for plotting
