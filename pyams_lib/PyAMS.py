@@ -387,6 +387,8 @@ time.name_='time';
 from pyams_lib.unewton import solven
 from pyams_lib.struct_ import option,control
 from pyams_lib.progressbar import starTime, displayBar
+from pyams_lib.digital import dsignal
+
 
 
 class circuit:
@@ -402,6 +404,7 @@ class circuit:
         self.option=option(self)   # Option of circuit simulation
         self.control=control(self) # Control of circuit simulation
         self.outputs=[]
+        self.tempOutputs=[]
 
     def addName(self, name: str, element: model):
         """
@@ -702,13 +705,11 @@ class circuit:
       Handles transient ('tran') analysis with progress tracking.
       """
 
-
       # Initialize progress tracking
       start_time = starTime()
       global time
 
       self.clearDataOutPuts();
-
 
       if self.analysis_['mode'] == 'tran':
         # Add the time variable to outputs for plotting

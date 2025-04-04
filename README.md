@@ -14,7 +14,7 @@
 </a>
  
  <a href="#News">
-    <img src="https://img.shields.io/badge/Version-0.1.4-blue" alt="V 0.1.4">
+    <img src="https://img.shields.io/badge/Version-0.1.5-blue" alt="V 0.1.5">
  </a>
   <a href="#Installation">
       <img src="https://img.shields.io/badge/Python->=3-blue" alt="Python 3+">
@@ -63,7 +63,40 @@ pip install --upgrade pyams_lib
 
 ---
 
-## Example Usage
+# Example
+
+## Example of modeling resistor and simulation in circuit
+
+### Modeling Resistor
+
+```python
+
+from pyams_lib import model,signal,param
+from pyams_lib import voltage,current
+
+#Creat resistor model------------------------------------------------------------
+class resistor(model):
+    """
+    This class implements a Resistor model.
+    init(): initals Signals and  Parameters
+    analog(): Defines the resistor behavior using Ohm's Law:
+                  I = V / R
+    """
+    def __init__(self, p, n):
+        #Signals declarations---------------------------------------------------
+        self.V = signal('in',voltage,p,n)
+        self.I = signal('out',current,p,n)
+
+        #Parameters declarations------------------------------------------------
+        self.R=param(1000.0,'Ω','Resistance')
+        self.Pout=param(1000.0,'Ω','Resistance')
+
+    def analog(self):
+        """Defines the resistor's current-voltage relationship using Ohm's Law."""
+        #Resistor equation-low hom (Ir=Vr/R)------------------------------------
+        self.I+=self.V/self.R
+
+```
 
 ### Voltage Divider Circuit Simulation
 
@@ -78,13 +111,13 @@ This example demonstrates a simple voltage divider circuit consisting of:
 ```python
 
 from pyams_lib import circuit
-from models  import Resistor, DCVoltage
+from models  import  DCVoltage
 
 
 # Elements of circuit
 V1= DCVoltage('n1', '0')    # Voltage source between node 'n1' and ground '0'
-R1= Resistor('n1', 'n2')   # Resistor R1 between node 'n1' and 'n2'
-R2= Resistor('n2', '0')    # Resistor R2 between node 'n2' and ground '0'
+R1= resistor('n1', 'n2')   # Resistor R1 between node 'n1' and 'n2'
+R2= resistor('n2', '0')    # Resistor R2 between node 'n2' and ground '0'
 
 # Set parameters for the elements
 V1.setParams("Vdc=10V")  # Set input voltage to 10V

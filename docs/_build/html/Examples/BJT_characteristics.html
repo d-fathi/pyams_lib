@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BJT Characteristics Analysis &mdash; PyAMS Library 0.1.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css?v=45cf7dbc" />
+      <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css?v=2a6c4383" />
+      <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css?v=d290406d" />
+
+  
+    <link rel="shortcut icon" href="../_static/logo_.png"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=59fadc99"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}})</script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AC to DC Converter" href="ACDCCircuit.html" />
+    <link rel="prev" title="Van der Pol Oscillator" href="Van_der_pol_Oscillator.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo_.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../News.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Release_History.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Modeling.html">Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Simulation.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Models.html">PyAMS Models</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="LCOscillator.html">LC Oscillator Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCCircuit.html">RC Circuit Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RLCircuit.html">RL Circuit Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RLCCircuit.html">RLC Circuit Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Half_Wave_Rectification.html">Half-Wave Rectification Circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ful_wave_bridge_rectifier.html">Full-Wave Bridge Rectifier Circuit Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Van_der_pol_Oscillator.html">Van der Pol Oscillator</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BJT Characteristics Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#equations">Equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#circuit-description">Circuit Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#circuit-diagram">Circuit Diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-simulation-code">Python Simulation Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulation-results">Simulation Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ACDCCircuit.html">AC to DC Converter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Donate.html">Support this project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyAMS Library</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../Examples.html">Examples</a></li>
+      <li class="breadcrumb-item active">BJT Characteristics Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/d-fathi/pyams_lib/blob/main/docs/Examples/BJT_characteristics.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bjt-characteristics-analysis">
+<span id="bjt-characteristics"></span><h1>BJT Characteristics Analysis<a class="headerlink" href="#bjt-characteristics-analysis" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>A <strong>Bipolar Junction Transistor (BJT)</strong> is a semiconductor device used for amplification and switching applications. In this document, we analyze the <strong>collector current (I:sub:`C`) versus collector-emitter voltage (V:sub:`CE`)</strong> characteristics for different base currents (I<sub>B</sub>).</p>
+</section>
+<section id="equations">
+<h2>Equations<a class="headerlink" href="#equations" title="Link to this heading"></a></h2>
+<p>The fundamental equation governing the BJT in active mode is:</p>
+<div class="math notranslate nohighlight">
+\[I_C = \beta I_B\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I_C\)</span> is the collector current,</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_B\)</span> is the base current,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span> is the current gain of the transistor.</p></li>
+</ul>
+<p>The collector-emitter voltage is given by:</p>
+<div class="math notranslate nohighlight">
+\[V_{CE} = V_C - V_E\]</div>
+</section>
+<section id="circuit-description">
+<h2>Circuit Description<a class="headerlink" href="#circuit-description" title="Link to this heading"></a></h2>
+<p>The circuit consists of:</p>
+<ul class="simple">
+<li><p>A DC current source supplying base current (<span class="math notranslate nohighlight">\(I_B\)</span>),</p></li>
+<li><p>A DC voltage source (<span class="math notranslate nohighlight">\(V_{CC}\)</span>),</p></li>
+<li><p>An NPN transistor (<span class="math notranslate nohighlight">\(Q_1\)</span>),</p></li>
+<li><p>A resistor (<span class="math notranslate nohighlight">\(R_1\)</span>) to limit base current.</p></li>
+</ul>
+</section>
+<section id="circuit-diagram">
+<h2>Circuit Diagram<a class="headerlink" href="#circuit-diagram" title="Link to this heading"></a></h2>
+<img alt="BJT Characteristics Circuit" src="../_images/BJT_characteristics_circuit.png" />
+</section>
+<section id="python-simulation-code">
+<h2>Python Simulation Code<a class="headerlink" href="#python-simulation-code" title="Link to this heading"></a></h2>
+<p>The following Python script simulates the BJT characteristics using the <strong>PyAMS library</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyams_lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">circuit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">DCCurrent</span><span class="p">,</span> <span class="n">DCVoltage</span><span class="p">,</span> <span class="n">NPN</span><span class="p">,</span> <span class="n">Resistor</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Define elements</span>
+<span class="n">Ib</span> <span class="o">=</span> <span class="n">DCCurrent</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;N02&quot;</span><span class="p">)</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="n">DCVoltage</span><span class="p">(</span><span class="s2">&quot;N01&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">NPN</span><span class="p">(</span><span class="s2">&quot;N01&quot;</span><span class="p">,</span> <span class="s2">&quot;N04&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="n">Resistor</span><span class="p">(</span><span class="s2">&quot;N02&quot;</span><span class="p">,</span> <span class="s2">&quot;N04&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set component values</span>
+<span class="n">Ib</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s2">&quot;Idc=1mA&quot;</span><span class="p">)</span>
+<span class="n">V1</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s2">&quot;Vdc=10.0V&quot;</span><span class="p">)</span>
+<span class="n">Q1</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s2">&quot;Bf=100.0 Br=1.0 Is=1e-16 Nf=1.0 Nr=1.0 Vaf=10 Var=10 Vt=0.025 area=1.0 gmin=1e-12&quot;</span><span class="p">)</span>
+<span class="n">R1</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s2">&quot;R=100&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create circuit and add elements</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">circuit</span><span class="p">()</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">addElements</span><span class="p">({</span><span class="s1">&#39;Ib&#39;</span><span class="p">:</span> <span class="n">Ib</span><span class="p">,</span> <span class="s1">&#39;V1&#39;</span><span class="p">:</span> <span class="n">V1</span><span class="p">,</span> <span class="s1">&#39;Q1&#39;</span><span class="p">:</span> <span class="n">Q1</span><span class="p">,</span> <span class="s1">&#39;R1&#39;</span><span class="p">:</span> <span class="n">R1</span><span class="p">})</span>
+
+<span class="c1"># Set outputs for plotting</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">setOutPuts</span><span class="p">(</span><span class="n">Q1</span><span class="o">.</span><span class="n">Vce</span><span class="p">,</span> <span class="n">Q1</span><span class="o">.</span><span class="n">Ic</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">analysis</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">V1</span><span class="o">.</span><span class="n">Vdc</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="c1"># Execute and plot for different base currents</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Current value of Ib: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">mA&quot;</span><span class="p">)</span>
+    <span class="n">Ib</span><span class="o">.</span><span class="n">Idc</span> <span class="o">+=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">1000</span>
+    <span class="n">circuit</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">Vce</span><span class="p">,</span> <span class="n">Ic</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">getOutPuts</span><span class="p">()</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Current value of Ib: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">mA&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Vce</span><span class="p">,</span> <span class="n">Ic</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Vce(V)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ic(A)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;BJT Characteristics&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="simulation-results">
+<h2>Simulation Results<a class="headerlink" href="#simulation-results" title="Link to this heading"></a></h2>
+<p>The results obtained from the simulation show how the collector current varies with the collector-emitter voltage for different base currents.</p>
+<img alt="BJT Characteristics Results" src="../_images/BJT_characteristics_result.png" />
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>This simulation provides insights into the BJT’s behavior under different base currents, demonstrating its amplification properties. The <strong>collector current increases with base current</strong>, confirming the fundamental transistor operation principle.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Van_der_pol_Oscillator.html" class="btn btn-neutral float-left" title="Van der Pol Oscillator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ACDCCircuit.html" class="btn btn-neutral float-right" title="AC to DC Converter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021-2025, PyAMS Library.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

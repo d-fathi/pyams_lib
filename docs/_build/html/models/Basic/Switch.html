@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voltage-Controlled Switch &mdash; PyAMS Library 0.1.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css?v=45cf7dbc" />
+      <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css?v=2a6c4383" />
+      <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css?v=d290406d" />
+
+  
+    <link rel="shortcut icon" href="../../_static/logo_.png"/>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=59fadc99"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}})</script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Current-controlled switch" href="SwitchC.html" />
+    <link rel="prev" title="Transformer" href="Transformer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo_.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../News.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Release_History.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Installation.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Modeling.html">Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Simulation.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Models.html">PyAMS Models</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Basic</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Resistor.html">Resistor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Capacitor.html">Capacitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Inductor.html">Inductor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="InductorIc.html">Inductor with Initial Current</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Conductor.html">Conductor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Conductor.html#id1">Conductor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VCVS.html">Voltage-Controlled Voltage Source (VCVS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VCCS.html">Voltage-Controlled Current Source (VCCS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CCVS.html">Current-Controlled Voltage Source (CCVS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CCCS.html">Current-Controlled Current Source (CCCS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Load.html">Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TransformerIdeal.html">Ideal Transformer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Transformer.html">Transformer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Voltage-Controlled Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SwitchC.html">Current-controlled switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SwitchSample.html">SwitchSample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NegativeResistance.html">Negative Resistance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NonlinearResistance.html">Nonlinear Resistance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Source/index.html">Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Semiconductor/index.html">Semiconductor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../CMOSGate/index.html">Digital</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Donate.html">Support this project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyAMS Library</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../Models.html">PyAMS Models</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic</a></li>
+      <li class="breadcrumb-item active">Voltage-Controlled Switch</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/d-fathi/pyams_lib/blob/main/docs/models/Basic/Switch.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <style>
+  .red {
+  color:red;
+  font-weight: bold;
+     }
+
+            .pro {
+          background-color: lightblue;
+         }
+</style><section id="voltage-controlled-switch">
+<h1>Voltage-Controlled Switch<a class="headerlink" href="#voltage-controlled-switch" title="Link to this heading"></a></h1>
+<p><span class="red">Information</span></p>
+<p>A <strong>Voltage-Controlled Switch</strong> is an electronic component that changes its resistance <strong>based on a control voltage (Vc)</strong>. The switch consists of an <strong>internal resistor (Rs)</strong> whose resistance dynamically changes between <strong>Ron (low resistance)</strong> and <strong>Roff (high resistance)</strong> depending on the control voltage.</p>
+<p>The switching behavior is defined as:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}R = R_{on}, \quad \text{if } V_c \geq V_{on}\\R = R_{off}, \quad \text{if } V_c \leq V_{off}\end{aligned}\end{align} \]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R\)</span> is the resistance of the switch</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_c\)</span> is the control voltage</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{on}\)</span> is the voltage threshold to turn <strong>ON</strong> the switch</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{off}\)</span> is the voltage threshold to turn <strong>OFF</strong> the switch</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{on}\)</span> is the resistance when the switch is <strong>ON</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{off}\)</span> is the resistance when the switch is <strong>OFF</strong></p></li>
+</ul>
+<p><span class="red">Ports</span></p>
+<ul class="simple">
+<li><p><strong>pc, nc</strong>: Control voltage input terminals</p></li>
+<li><p><strong>p, n</strong>: Switch terminals</p></li>
+</ul>
+<p><span class="red">Model</span></p>
+<p>The <strong>Voltage-Controlled Switch model</strong> simulates a switch using a <strong>variable resistor</strong>.</p>
+<blockquote>
+<div><p>The switch operates based on the control voltage (Vc) and uses an
+internal resistor model (Rs) to represent its resistance.</p>
+<p>Attributes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Vc (signal): Control voltage input that determines switch state.</p></li>
+<li><p>Rs (Resistor): Internal resistor model representing switch resistance.</p></li>
+<li><p>Von (param): Voltage threshold to turn the switch ON (default: 5V).</p></li>
+<li><p>Voff (param): Voltage threshold to turn the switch OFF (default: -5V).</p></li>
+<li><p>Ron (param): Resistance value when the switch is ON (default: 10Ω).</p></li>
+<li><p>Roff (param): Resistance value when the switch is OFF (default: 1MΩ).</p></li>
+<li><p>Rint (param): Initial resistance value (default: 10Ω).</p></li>
+</ul>
+</div></blockquote>
+<p>Methods:</p>
+<blockquote>
+<div><p>sub(): Initializes the internal resistor model.
+analog(): Dynamically updates resistance based on control voltage.</p>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyams_lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">param</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyams_lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">voltage</span><span class="p">,</span> <span class="n">current</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models.Basic.Resistor</span><span class="w"> </span><span class="kn">import</span> <span class="n">Resistor</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Switch</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Voltage-Controlled Switch Model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pc</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="c1"># Signal declarations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Vc</span> <span class="o">=</span> <span class="n">signal</span><span class="p">(</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="n">pc</span><span class="p">,</span> <span class="n">nc</span><span class="p">)</span>
+
+        <span class="c1"># Resistor model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Rs</span> <span class="o">=</span> <span class="n">Resistor</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+        <span class="c1"># Parameter declarations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Von</span> <span class="o">=</span> <span class="n">param</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;Voltage for switch ON&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Voff</span> <span class="o">=</span> <span class="n">param</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;Voltage for switch OFF&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Ron</span> <span class="o">=</span> <span class="n">param</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="s1">&#39;Ω&#39;</span><span class="p">,</span> <span class="s1">&#39;ON-state resistance&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Roff</span> <span class="o">=</span> <span class="n">param</span><span class="p">(</span><span class="mf">1e+6</span><span class="p">,</span> <span class="s1">&#39;Ω&#39;</span><span class="p">,</span> <span class="s1">&#39;OFF-state resistance&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Rint</span> <span class="o">=</span> <span class="n">param</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="s1">&#39;Ω&#39;</span><span class="p">,</span> <span class="s1">&#39;Initial resistance value&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the internal resistor model with default resistance.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Rs</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Rint</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">Rs</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">analog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the resistance value based on control voltage.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vc</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Von</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Rs</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ron</span>  <span class="c1"># Switch ON</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Vc</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Voff</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Rs</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Roff</span>  <span class="c1"># Switch OFF</span>
+</pre></div>
+</div>
+<p><span class="red">Command syntax</span></p>
+<p>The <strong>syntax</strong> for defining a Voltage-Controlled Switch model in a PyAMS simulation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Switch</span>
+
+<span class="c1"># Sname: is the name of the switch instance</span>
+<span class="c1"># pc, nc: Control voltage input terminals</span>
+<span class="c1"># p, n: Switch terminals in the circuit</span>
+<span class="n">Sname</span> <span class="o">=</span> <span class="n">Switch</span><span class="p">(</span><span class="n">pc</span><span class="p">,</span> <span class="n">nc</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Transformer.html" class="btn btn-neutral float-left" title="Transformer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SwitchC.html" class="btn btn-neutral float-right" title="Current-controlled switch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021-2025, PyAMS Library.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

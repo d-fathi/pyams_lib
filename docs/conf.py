@@ -22,8 +22,8 @@ copyright = '(c) 2021-2025, PyAMS Library'
 author = 'd.fathi'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.4'
-version='pyams lib 0.1.4'
+release ='0.1.5'
+version='0.1.5'
 
 
 # -- General configuration ---------------------------------------------------
@@ -71,7 +71,7 @@ html_logo = "logo_.png"
 html_favicon = "logo_.png"
 html_theme_options = {
     "navigation_depth": 5,
-    "collapse_navigation": False,
+    "collapse_navigation": True,
       "logo_only": True,
     "display_version": True
 }
@@ -93,6 +93,3 @@ html_context = {
 }
 
 
-rst_epilog = """
-.. |pypi_link| replace:: `PyAMS Library on PyPI <https://pypi.org/project/pyams-lib/>`_
-"""
