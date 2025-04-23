@@ -2,7 +2,7 @@
  Python library for analog and mixed-signal simulation (PyAMS Library)
 
 <h1 align="center">
-    <a href="https://pypi.org/project/pyams-lib/"><img src="https://pyams-lib.readthedocs.io/en/latest/_static/logo_.png" width="150px" alt="PyAMS-lib"></a>
+    <a href="https://pypi.org/project/pyams_lib/"><img src="https://pyams-lib.readthedocs.io/en/latest/_static/logo_.png" width="150px" alt="PyAMS-lib"></a>
 </h1>
 
 ---
@@ -33,7 +33,7 @@
 
 # PyAMS Library
 
-## What is `pyams_lib`?
+## What is `pyams-lib`?
 
 `pyams_lib` is a Python package designed to simplify the modeling of analog elements and the simulation of electronic circuits. It provides:
 
