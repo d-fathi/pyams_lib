@@ -43,7 +43,7 @@ The **DCVoltage model** represents a **constant voltage source**.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage
+    from pyams.lib import model, signal, param, voltage
 
     class DCVoltage(model):
         """

@@ -57,7 +57,7 @@ The following Python script simulates the AC to DC conversion using the `PyAMS` 
 
 .. code-block:: python
 
-   from pyams_lib import circuit
+   from pyams.lib import circuit
    from models import DiodeBridge, SinVoltage, Resistor, Capacitor, Transformer
 
    # Define elements

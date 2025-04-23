@@ -55,8 +55,8 @@ The **Conductor model** implements an **ideal linear conductor** with a specifie
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param
-    from pyams_lib import voltage, current
+    from pyams.lib import model, signal, param
+    from pyams.lib import voltage, current
 
     class Conductor(model):
         """

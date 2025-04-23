@@ -6,7 +6,7 @@
 # Licence:     free GPLv3
 #-------------------------------------------------------------------------------
 
-from pyams_lib import dsignal, model,circuit
+from pyams.lib import dsignal, model,circuit
 
 # Create digital models---------------------------------------------------------
 class AND(model):

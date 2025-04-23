@@ -48,8 +48,8 @@ The **SinCurrent model** represents a **sinusoidal AC current source**.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, time
-    from pyams_lib import current
+    from pyams.lib import model, signal, param, time
+    from pyams.lib import current
     from math import sin, pi
 
     class SinCurrent(model):

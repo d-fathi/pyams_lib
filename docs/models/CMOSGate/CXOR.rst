@@ -59,7 +59,7 @@ The **CMOS XOR Gate model** implements standard XOR logic behavior using voltage
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage
+    from pyams.lib import model, signal, param, voltage
 
     class CXOR(model):
         """

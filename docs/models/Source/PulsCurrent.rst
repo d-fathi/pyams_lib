@@ -56,8 +56,8 @@ The **PulsCurrent model** generates a **square wave current signal**.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, time
-    from pyams_lib import current
+    from pyams.lib import model, signal, param, time
+    from pyams.lib import current
 
     class PulsCurrent(model):
         """

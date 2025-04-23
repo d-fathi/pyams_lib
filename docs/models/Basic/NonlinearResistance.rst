@@ -44,8 +44,8 @@ The **Nonlinear Resistance model** represents a voltage-dependent resistance.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param
-    from pyams_lib import voltage, current
+    from pyams.lib import model, signal, param
+    from pyams.lib import voltage, current
 
     class NonlinearResistance(model):
         """

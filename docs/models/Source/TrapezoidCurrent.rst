@@ -56,8 +56,8 @@ The **TrapezoidCurrent model** generates a **trapezoidal current signal**.
         analog(): Implements the trapezoidal current equation.
 .. code-block:: python
 
- from pyams_lib import model, time, signal, param
- from pyams_lib import current
+ from pyams.lib import model, time, signal, param
+ from pyams.lib import current
 
   # Trapezoidal Current Source Model 
   class TrapezoidCurrent(model):

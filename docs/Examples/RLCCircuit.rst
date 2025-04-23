@@ -3,7 +3,7 @@
 RLC Circuit Simulation
 ===============================
 
-This document describes the implementation of an RLC circuit using `pyams_lib` for transient analysis. The simulation evaluates the voltage and current characteristics over time.
+This document describes the implementation of an RLC circuit using `pyams.lib` for transient analysis. The simulation evaluates the voltage and current characteristics over time.
 
 RLC Circuit
 ------------
@@ -108,11 +108,11 @@ Since :math:`\alpha^2 \ll \omega_0^2`, the circuit is **underdamped** and exhibi
 Python Code for RLC Circuit
 ---------------------------
 
-The following Python script models the RLC circuit using `pyams_lib`:
+The following Python script models the RLC circuit using `pyams.lib`:
 
 .. code-block:: python
 
-   from pyams_lib import circuit
+   from pyams.lib import circuit
    from models import Resistor, DCVoltage, Capacitor, Inductor
 
    # Define circuit elements

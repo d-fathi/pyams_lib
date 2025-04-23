@@ -61,7 +61,7 @@ The **PNP Transistor model** implements a basic **Bipolar Junction Transistor (B
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current, explim
+    from pyams.lib import model, signal, param, voltage, current, explim
 
     class PNP(model):
         """

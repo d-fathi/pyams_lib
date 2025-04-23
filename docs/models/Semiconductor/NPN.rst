@@ -79,7 +79,7 @@ The **NPN Transistor model** implements a **nonlinear behavior** using the **Ebe
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current, explim
+    from pyams.lib import model, signal, param, voltage, current, explim
 
     class NPN(model):
         """

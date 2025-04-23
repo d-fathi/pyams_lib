@@ -59,7 +59,7 @@ The **CMOS OR Gate model** implements standard OR logic behavior using voltage t
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage
+    from pyams.lib import model, signal, param, voltage
 
     class COR(model):
         """

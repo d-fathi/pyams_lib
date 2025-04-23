@@ -42,8 +42,8 @@ The **SquareCurrent model** generates a **square wave current signal**, useful f
 
 .. code-block:: python
 
-   from pyams_lib import model, signal, param, time
-   from pyams_lib import current
+   from pyams.lib import model, signal, param, time
+   from pyams.lib import current
 
    # Square Current Source Model--------------------------------------------------
    class SquareCurrent(model):

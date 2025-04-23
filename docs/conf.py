@@ -22,8 +22,8 @@ copyright = '(c) 2021-2025, PyAMS Library'
 author = 'd.fathi'
 
 # The full version, including alpha/beta/rc tags
-release ='0.1.5'
-version='0.1.5'
+release ='0.1.6'
+version='PyAMS Lib 0.1.6'
 
 
 # -- General configuration ---------------------------------------------------
@@ -86,7 +86,7 @@ highlight_language = 'none'
 html_context = {
     "display_github": True,
     "github_user": "d-fathi",
-    "github_repo": "pyams_lib",
+    "github_repo": "pyams.lib",
     "github_version": "main", 
     "conf_py_path": "/docs/", 
     "pypi_project": "https://pypi.org/project/pyams-lib/" 

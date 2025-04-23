@@ -58,7 +58,7 @@ The **CMOS AND Gate model** implements standard AND logic behavior using voltage
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage
+    from pyams.lib import model, signal, param, voltage
 
     class CAND(model):
         """

@@ -37,7 +37,7 @@ The **Diode Bridge model** consists of four diodes arranged in a bridge configur
 
 .. code-block:: python
 
-    from pyams_lib import param, model
+    from pyams.lib import param, model
     from models import Diode
 
     class DiodeBridge(model):

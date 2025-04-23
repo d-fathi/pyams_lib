@@ -49,8 +49,8 @@ The **SinVoltage model** represents a **sinusoidal AC voltage source**.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, time
-    from pyams_lib import voltage
+    from pyams.lib import model, signal, param, time
+    from pyams.lib import voltage
     from math import sin, pi
 
     class SinVoltage(model):

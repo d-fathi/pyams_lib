@@ -50,7 +50,7 @@ The **SwitchSample model** simulates a voltage-controlled switch by varying the 
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage
+    from pyams.lib import model, signal, param, voltage
     from models.Basic.Resistor import Resistor
 
     class SwitchSample(model):

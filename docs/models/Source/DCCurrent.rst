@@ -43,7 +43,7 @@ The **DCCurrent model** represents a **constant current source**.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, current
+    from pyams.lib import model, signal, param, current
 
     class DCCurrent(model):
         """

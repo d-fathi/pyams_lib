@@ -22,8 +22,8 @@ num:
 fr=0.5 and T=2
 '''
 
-from pyams_lib import circuit
-from models import Inductor, CapacitorIc
+from pyams.lib import circuit
+from pyams.models  import Inductor, CapacitorIc
 from math import pi
 
 L1 = Inductor("out","0");

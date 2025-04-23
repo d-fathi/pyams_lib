@@ -3,7 +3,7 @@
 Commands
 ========
 
-The pyams_lib command syntax for simulation.
+The pyams.lib command syntax for simulation.
 
 Create the Circuit Object
 *************************
@@ -14,7 +14,7 @@ Syntax:
 
 .. code-block:: py3
 
-   from pyams_lib import circuit
+   from pyams.lib import circuit
 
    cir=circuit()
    cir.addElements(model_name_1,model_name_2,......,model_name_n)

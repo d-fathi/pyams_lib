@@ -50,7 +50,7 @@ The **Diode Laser model** implements an advanced nonlinear diode with thermal an
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current, explim, ddt
+    from pyams.lib import model, signal, param, voltage, current, explim, ddt
 
     class DiodeLaser(model):
         """

@@ -53,7 +53,7 @@ The **PMOS model** implements an ideal P-channel MOSFET.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current
+    from pyams.lib import model, signal, param, voltage, current
 
     class PMOS(model):
         """

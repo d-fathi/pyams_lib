@@ -47,7 +47,7 @@ The **CMOS Buffer Gate model** uses the same voltage at the output as the input.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage
+    from pyams.lib import model, signal, param, voltage
 
     class CBuffer(model):
         """

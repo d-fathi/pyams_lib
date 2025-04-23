@@ -48,7 +48,7 @@ The **Diode model** implements a simple nonlinear diode.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current, explim
+    from pyams.lib import model, signal, param, voltage, current, explim
 
     class Diode(model):
         """

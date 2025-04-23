@@ -5,8 +5,8 @@
 # Copyright:   (c) PyAMS
 #-------------------------------------------------------------------------------
 
-from pyams_lib import circuit
-from models import Resistor, SquareVoltage, Capacitor
+from pyams.lib import circuit
+from pyams.models import Resistor, SquareVoltage, Capacitor
 
 # Define elements
 R1=Resistor("Vin","Vout");

@@ -6,4 +6,4 @@ News
 
 What’s changed in version: 
 
-- Updated ``pyams_lib``  and created models directory.
+- Updated ``pyams.lib``  and created models directory.

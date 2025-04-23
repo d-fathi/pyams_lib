@@ -53,7 +53,7 @@ The **CMOS NOT Gate model** implements standard NOT logic behavior using voltage
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage
+    from pyams.lib import model, signal, param, voltage
 
     class CNOT(model):
         """

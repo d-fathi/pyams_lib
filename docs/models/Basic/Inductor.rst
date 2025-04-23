@@ -49,7 +49,7 @@ The **Inductor model** implements an ideal inductor.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current
+    from pyams.lib import model, signal, param, voltage, current
 
     class Inductor(model):
         """

@@ -6,8 +6,8 @@
 #-------------------------------------------------------------------------------
 
 
-from pyams_lib import circuit
-from models import Resistor, DCVoltage, Capacitor, Inductor
+from pyams.lib import circuit
+from pyams.models  import Resistor, DCVoltage, Capacitor, Inductor
 
 # Define elements
 V1=DCVoltage("Vin","0");

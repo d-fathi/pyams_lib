@@ -50,7 +50,7 @@ The **CapacitorIc model** simulates a capacitor with an **initial charge**.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current, ddt
+    from pyams.lib import model, signal, param, voltage, current, ddt
 
     class CapacitorIc(model):
         """

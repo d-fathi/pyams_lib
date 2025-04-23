@@ -43,7 +43,7 @@ The **Zener Diode model** represents both forward conduction and reverse breakdo
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current, explim
+    from pyams.lib import model, signal, param, voltage, current, explim
 
     class DiodeZener(model):
         """

@@ -14,7 +14,7 @@
 </a>
  
  <a href="#News">
-    <img src="https://img.shields.io/badge/Version-0.1.5-blue" alt="V 0.1.5">
+    <img src="https://img.shields.io/badge/Version-0.1.6-blue" alt="V 0.1.6">
  </a>
   <a href="#Installation">
       <img src="https://img.shields.io/badge/Python->=3-blue" alt="Python 3+">
@@ -71,8 +71,8 @@ pip install --upgrade pyams_lib
 
 ```python
 
-from pyams_lib import model,signal,param
-from pyams_lib import voltage,current
+from pyams.lib import model,signal,param
+from pyams.lib import voltage,current
 
 #Creat resistor model------------------------------------------------------------
 class resistor(model):
@@ -110,8 +110,8 @@ This example demonstrates a simple voltage divider circuit consisting of:
 
 ```python
 
-from pyams_lib import circuit
-from models  import  DCVoltage
+from pyams.lib import circuit
+from pyams.models  import  DCVoltage
 
 
 # Elements of circuit

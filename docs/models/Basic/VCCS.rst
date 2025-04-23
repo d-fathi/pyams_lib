@@ -46,7 +46,7 @@ The **VCCS model** implements an ideal voltage-controlled current source.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current
+    from pyams.lib import model, signal, param, voltage, current
 
     class VCCS(model):
         """

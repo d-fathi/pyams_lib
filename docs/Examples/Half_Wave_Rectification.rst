@@ -42,7 +42,7 @@ The following Python script simulates the **half-wave rectification** circuit us
 
 .. code-block:: python
 
-   from pyams_lib import circuit
+   from pyams.lib import circuit
    from models import Resistor, SinVoltage, Diode
 
    # Define components

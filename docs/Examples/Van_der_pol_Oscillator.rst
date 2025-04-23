@@ -38,8 +38,8 @@ The following Python script simulates the **Van der Pol Oscillator** using the *
 
 .. code-block:: python
 
-   from pyams_lib import model, signal, param
-   from pyams_lib import voltage, current
+   from pyams.lib import model, signal, param
+   from pyams.lib import voltage, current
 
    # Nonlinear Resistance Model
    class NonlinearResistance(model):
@@ -51,7 +51,7 @@ The following Python script simulates the **Van der Pol Oscillator** using the *
        def analog(self):
            self.I += self.\u03bc * self.V * (self.V * self.V - 1)
 
-   from pyams_lib import circuit
+   from pyams.lib import circuit
    from models import CapacitorIc, InductorIc
 
    # Define Components
@@ -92,7 +92,7 @@ Below is the Python code used to simulate the Van der Pol oscillator with  diffe
 .. code-block:: python
 
 
-   from pyams_lib import circuit
+   from pyams.lib import circuit
    from models import CapacitorIc, InductorIc
 
    R1 = NonlinearResistance("Vout","0")

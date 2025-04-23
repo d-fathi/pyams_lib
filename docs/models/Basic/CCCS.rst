@@ -46,7 +46,7 @@ The **CCCS model** implements an ideal current-controlled current source.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, current
+    from pyams.lib import model, signal, param, current
 
     class CCCS(model):
         """

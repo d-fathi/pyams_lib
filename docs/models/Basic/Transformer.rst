@@ -58,9 +58,9 @@ The **Transformer model** implements a **mutual inductor** with primary and seco
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param
-    from pyams_lib import voltage, current
-    from pyams_lib import ddt
+    from pyams.lib import model, signal, param
+    from pyams.lib import voltage, current
+    from pyams.lib import ddt
 
     class Transformer(model):
         """

@@ -3,15 +3,15 @@
 Installation
 ============
 
-To install ``pyams_lib``, use the following command::
+To install ``pyams.lib``, use the following command::
 
-    pip install pyams_lib
+    pip install pyams.lib
 
 To upgrade to the latest version::
 
-    pip install --upgrade pyams_lib
+    pip install --upgrade pyams.lib
 
 License
 =======
 
-``pyams_lib`` is free to use and distributed under the **GPLv3** license.
+``pyams.lib`` is free to use and distributed under the **GPLv3** license.

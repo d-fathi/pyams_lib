@@ -55,8 +55,8 @@ The **Voltage-Controlled Switch model** simulates a switch using a **variable re
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param
-    from pyams_lib import voltage, current
+    from pyams.lib import model, signal, param
+    from pyams.lib import voltage, current
     from models.Basic.Resistor import Resistor
 
     class Switch(model):

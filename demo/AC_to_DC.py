@@ -8,8 +8,8 @@
 
 
 
-from pyams_lib import circuit
-from models  import DiodeBridge, SinVoltage,Resistor,Capacitor, Transformer
+from pyams.lib import circuit
+from pyams.models  import DiodeBridge, SinVoltage,Resistor,Capacitor, Transformer
 
 # Define elements
 D1 = DiodeBridge("sec","Out","N05","0");
@@ -36,6 +36,6 @@ circuit.setOutPuts("In","Out");
 
 
 # Perform transient analysis
-circuit.analysis(mode="tran",start=0,stop=0.08,step=0.0001);
+circuit.analysis(mode="tran",start=0,stop=0.1,step=0.0001);
 circuit.run();
 circuit.plot();

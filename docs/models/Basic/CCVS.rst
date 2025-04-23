@@ -46,7 +46,7 @@ The **CCVS model** implements an ideal current-controlled voltage source.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current
+    from pyams.lib import model, signal, param, voltage, current
 
     class CCVS(model):
         """

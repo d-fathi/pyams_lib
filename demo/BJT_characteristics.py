@@ -6,8 +6,8 @@
 # Licence:     free GPLv3
 #-------------------------------------------------------------------------------
 
-from pyams_lib import circuit
-from models import DCCurrent, DCVoltage, NPN, Resistor;
+from pyams.lib import circuit
+from pyams.models  import DCCurrent, DCVoltage, NPN, Resistor;
 
 # Define elements
 Ib = DCCurrent("0","N02");

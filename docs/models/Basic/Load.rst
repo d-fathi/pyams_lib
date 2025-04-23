@@ -50,7 +50,7 @@ The **Load model** represents a resistive load that follows Ohm’s Law and comp
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current
+    from pyams.lib import model, signal, param, voltage, current
 
     class Load(model):
         """

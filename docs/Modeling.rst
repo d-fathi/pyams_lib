@@ -3,7 +3,7 @@
 Modeling
 ========
 
-The modeling of analog elements in `pyams_lib` is based on defining their behavior using the Python language while following a structured approach:
+The modeling of analog elements in `pyams.lib` is based on defining their behavior using the Python language while following a structured approach:
 
 1. Declaring the required library;
 2. Defining the model name;
@@ -12,11 +12,11 @@ The modeling of analog elements in `pyams_lib` is based on defining their behavi
 5. Adding sub-models if applicable;
 6. Establishing relationships between signals and parameters.
 
-The general structure for modeling an analog element in `pyams_lib` is illustrated in the following example:
+The general structure for modeling an analog element in `pyams.lib` is illustrated in the following example:
 
 .. code-block:: py3
 
-   from pyams_lib import model, signal  # Library declaration
+   from pyams.lib import model, signal  # Library declaration
 
    class NameOfElement(model):          # Model definition
 
@@ -36,10 +36,10 @@ The ``__init__`` and ``analog`` functions are the core components of a model. Ad
 - **Sub-function:** Used to construct sub-circuits within the model.
 - **Start function:** Initializes values when starting a simulation.
 
-Signals and Parameters in `pyams_lib`
+Signals and Parameters in `pyams.lib`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Signals in `pyams_lib` represent electrical quantities (voltage or current) and define how connections are established within the model. Signal declaration follows this syntax:
+Signals in `pyams.lib` represent electrical quantities (voltage or current) and define how connections are established within the model. Signal declaration follows this syntax:
 
 .. code-block:: py3
 
@@ -66,7 +66,7 @@ where:
 Allowed Operations Between Signals and Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following table summarizes the mathematical and logical operations available in `pyams_lib`:
+The following table summarizes the mathematical and logical operations available in `pyams.lib`:
 
 =========  ================================  =========
 Operation  Description                       Result

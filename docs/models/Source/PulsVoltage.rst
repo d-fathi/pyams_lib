@@ -56,8 +56,8 @@ The **PulsVoltage model** generates a **square wave voltage signal**.
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, time
-    from pyams_lib import voltage
+    from pyams.lib import model, signal, param, time
+    from pyams.lib import voltage
 
     class PulsVoltage(model):
         """

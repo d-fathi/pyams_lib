@@ -2,8 +2,8 @@
 
 
 
-from pyams_lib import time,circuit
-from models import Resistor, SinVoltage, Diode;
+from pyams.lib import time,circuit
+from pyams.models  import Resistor, SinVoltage, Diode;
 
 R1 = Resistor("Out","0");
 V1 = SinVoltage("In","0");

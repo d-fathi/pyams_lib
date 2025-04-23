@@ -53,8 +53,8 @@ The **Negative Resistance model** represents a nonlinear **voltage-dependent con
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param
-    from pyams_lib import voltage, current
+    from pyams.lib import model, signal, param
+    from pyams.lib import voltage, current
 
     class NegativeResistance(model):
         """

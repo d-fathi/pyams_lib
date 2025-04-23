@@ -15,22 +15,22 @@ Welcome to PyAMS Library documentation
 .. image:: https://img.shields.io/pypi/pyversions/pyams-lib.svg
     :target: https://pypi.org/project/pyams-lib/
 
-.. image:: https://img.shields.io/github/license/d-fathi/pyams_lib.svg
-    :target: https://github.com/d-fathi/pyams_lib/blob/main/LICENSE
+.. image:: https://img.shields.io/github/license/d-fathi/pyams.lib.svg
+    :target: https://github.com/d-fathi/pyams.lib/blob/main/LICENSE
 
 ********************
-What is `pyams_lib`?
+What is `pyams.lib`?
 ********************
 
-`pyams_lib` is a Python package designed to simplify the modeling of analog elements and the simulation of electronic circuits. It provides:
+`pyams.lib` is a Python package designed to simplify the modeling of analog elements and the simulation of electronic circuits. It provides:
 
 - The ability to create custom models of electrical components.
 - Simulation of circuits in different modes of operation.
 - Visualization of simulation results using `matplotlib`.
 - Compatibility with Python 3+ and PyPy, working across Linux, Windows, and macOS.
-- pip install pyams_lib: `<https://pypi.org/project/pyams_lib/>`_
-- PyAMS library (pyams_lib) documentation : `<https://pyams-lib.readthedocs.io/>`_
-- github project: `<https://github.com/d-fathi/pyams_lib/>`_
+- pip install pyams.lib: `<https://pypi.org/project/pyams.lib/>`_
+- PyAMS library (pyams.lib) documentation : `<https://pyams-lib.readthedocs.io/>`_
+- github project: `<https://github.com/d-fathi/pyams.lib/>`_
 
 .. panels::
 
@@ -42,13 +42,13 @@ What is `pyams_lib`?
 
     :ref:`Installation <Installation-page>`
 
-    How to install pyams_lib in python
+    How to install pyams.lib in python
 
     ---
 
     :ref:`Modeling <modeling-page>`
 
-    Guidelines to method of modeling of analog elements by pyams_lib.
+    Guidelines to method of modeling of analog elements by pyams.lib.
 
     ---
     
@@ -73,7 +73,7 @@ What is `pyams_lib`?
 
     :ref:`Commands <commands-manual-page>`
 
-    The pyams_lib command syntax for simulation.
+    The pyams.lib command syntax for simulation.
 
     ---
 

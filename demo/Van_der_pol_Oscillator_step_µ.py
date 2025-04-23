@@ -8,8 +8,8 @@
 
 
 
-from pyams_lib import model, signal, param
-from pyams_lib import voltage, current
+from pyams.lib import model, signal, param
+from pyams.lib import voltage, current
 
 # Modeling Nonlinear Resistance  R=1/(µ*(V² - 1))---------------------------------
 class NonlinearResistance(model):
@@ -46,8 +46,8 @@ class NonlinearResistance(model):
 
 #Applicated Modele of Nonlinear Resistance to simulation Van der pol Oscillator
 
-from pyams_lib import circuit
-from models import CapacitorIc, InductorIc
+from pyams.lib import circuit
+from pyams.models  import CapacitorIc, InductorIc
 
 
 R1 = NonlinearResistance("Vout","0");

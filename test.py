@@ -2,6 +2,7 @@
 # Name:        Voltage Divider Circuit
 # Author:      dhiab fathi
 # Created:     19/03/2025
+# Update:      23/04/2025
 # Copyright:   (c) PyAMS 2025
 # Licence:     GPLv3
 #-------------------------------------------------------------------------------
@@ -18,8 +19,8 @@ The output voltage is measured across R2.
 #--------------------------------------------------------------------------------
 
 
-from pyams_lib import model,signal,param
-from pyams_lib import voltage,current
+from pyams.lib import model,signal,param
+from pyams.lib import voltage,current
 
 #Creat resistor model------------------------------------------------------------
 class resistor(model):
@@ -47,10 +48,10 @@ class resistor(model):
 
 
 #------------------------------------------------------------------------------
-# Step2 :Applicated resistor Model in circuit 
+# Step2 :Applicated resistor Model in circuit
 #-----------------------------------------------------------------------------
-from pyams_lib import circuit
-from models import DCVoltage
+from pyams.lib import circuit
+from pyams.models import DCVoltage
 
 
 # Elements of circuit
@@ -59,7 +60,7 @@ R1= resistor('n1', 'n2')   # Resistor R1 between node 'n1' and 'n2'
 R2= resistor('n2', '0')    # Resistor R2 between node 'n2' and ground '0'
 
 # Set parameters for the elements
-V1.setParams("Vdc=10V")  # Set input voltage to 10V
+V1.setParams("Vdc=15V")  # Set input voltage to 15V
 R1.setParams("R=2kΩ")    # Set R1 to 2kΩ
 R2.setParams("R=2kΩ")    # Set R2 to 2kΩ
 
@@ -77,5 +78,11 @@ myCircuit.run()
 
 # print value voltage at node 'n2' and current in 'R1'
 myCircuit.print('n2', R1.I)
+
+
+'''
+Output Voltage at node n2: 7.5 V
+Output current R1.I: 3.75 mA
+'''
 
 

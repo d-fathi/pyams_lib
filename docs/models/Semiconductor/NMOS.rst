@@ -57,7 +57,7 @@ The **NMOS model** follows the standard MOSFET equations to describe its behavio
 
 .. code-block:: python
 
-    from pyams_lib import model, signal, param, voltage, current
+    from pyams.lib import model, signal, param, voltage, current
 
     class NMOS(model):
         """

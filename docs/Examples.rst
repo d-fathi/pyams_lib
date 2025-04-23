@@ -16,4 +16,5 @@ This examples of simulation circuits by PyAMS library.
   Examples/Van_der_pol_Oscillator.rst
   Examples/BJT_characteristics.rst
   Examples/ACDCCircuit.rst
+  Examples/Voltage_Divider.rst
 .. End

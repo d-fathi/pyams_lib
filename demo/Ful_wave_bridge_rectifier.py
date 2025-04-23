@@ -7,8 +7,8 @@
 #-------------------------------------------------------------------------------
 
 
-from pyams_lib import circuit
-from models import Resistor, SinVoltage, DiodeBridge
+from pyams.lib import circuit
+from pyams.models  import Resistor, SinVoltage, DiodeBridge
 
 # Define elements
 R1 = Resistor("Vout", "0")
