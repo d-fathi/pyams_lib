@@ -5,6 +5,10 @@ Trapezoid Current
 
 :red:`Information`
 
+.. figure:: TrapezoidCurrent.png
+   :scale: 50%
+   :align: center
+
 A **Trapezoidal Wave Current Source** generates a **current signal** with a linear rise and fall, forming a trapezoidal waveform.
 
 .. math::  

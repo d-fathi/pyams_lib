@@ -4,6 +4,10 @@ SwitchSample
 ============
 
 :red:`Information`
+
+.. figure:: SwitchSample.png
+   :scale: 50%
+   :align: center
   
 A **SwitchSample** is a **voltage-controlled switch** that changes its resistance based on a control voltage. It operates with two states:
 

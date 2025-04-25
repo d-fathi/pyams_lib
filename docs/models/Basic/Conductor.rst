@@ -6,10 +6,11 @@ Conductor
 
 .. role:: red
 
-Conductor
-=========
-
 :red:`Information`
+
+.. figure:: Inductor.png
+   :scale: 50%
+   :align: center
 
 An **ideal linear electrical conductor** is an electrical component that allows current to flow with a defined **conductance (G)**. Conductance is the reciprocal of resistance and determines how easily current flows through the conductor.
 

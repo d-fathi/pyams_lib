@@ -4,6 +4,10 @@ Voltage-Controlled Current Source (VCCS)
 =========================================
 
 :red:`Information`
+
+.. figure:: VCCS.png
+   :scale: 50%
+   :align: center
  
 A **Voltage-Controlled Current Source (VCCS)** is a dependent current source whose output current is proportional to a reference (control) voltage applied across a separate circuit branch. The fundamental equation governing VCCS is:
 

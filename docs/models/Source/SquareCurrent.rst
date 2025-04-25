@@ -1,9 +1,13 @@
 .. include:: ../importCSS.txt
 
-SquareCurrent
-=============
+Square Current
+==============
 
 :red:`Information`
+
+.. figure:: SquareCurrent.png
+   :scale: 50%
+   :align: center
 
 A **Square Wave Current Source** generates a periodic **square wave** signal that alternates between **high and low states**.
 

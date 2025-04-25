@@ -1,9 +1,13 @@
 .. include:: ../importCSS.txt
 
 Square Voltage
-=============
+==============
 
 :red:`Information`
+
+.. figure:: SquareVoltage.png
+   :scale: 50%
+   :align: center
 
 A **Square Wave Voltage Source** generates a **periodic alternating voltage signal** based on the following equation:
 

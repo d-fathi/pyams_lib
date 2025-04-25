@@ -5,6 +5,10 @@ Trapezoid Voltage
 
 :red:`Information`
 
+.. figure:: TrapezoidVoltage.png
+   :scale: 50%
+   :align: center
+
 A **Trapezoidal Wave Voltage Source** generates a **voltage signal** with a linear rise and fall, forming a trapezoidal waveform.
 
 .. math::  

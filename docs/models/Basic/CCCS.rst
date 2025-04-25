@@ -4,6 +4,10 @@ Current-Controlled Current Source (CCCS)
 =========================================
 
 :red:`Information`
+
+.. figure:: CCCS.png
+   :scale: 50%
+   :align: center
  
 A **Current-Controlled Current Source (CCCS)** is a dependent current source whose output current is proportional to a reference (control) current flowing through a separate circuit branch. The fundamental equation governing CCCS is:
 

@@ -4,6 +4,10 @@ Transformer
 ===========
 
 :red:`Information`
+
+.. figure:: Transformer.png
+   :scale: 50%
+   :align: center
   
 A **transformer** is a passive electrical device that transfers electrical energy between circuits through **mutual inductance**. It consists of a **primary coil** and a **secondary coil** with inductance values **Lp** and **Ls**, respectively. The **mutual inductance (M)** couples the two windings.
 

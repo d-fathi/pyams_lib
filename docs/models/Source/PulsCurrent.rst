@@ -1,9 +1,13 @@
 .. include:: ../importCSS.txt
 
-PulsCurrent
-===========
+Puls Current
+============
 
 :red:`Information`
+
+.. figure:: PulsCurrent.png
+   :scale: 50%
+   :align: center
 
 A **Pulsed Current Source** generates a **square wave current signal** based on the following equation:
 

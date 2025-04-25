@@ -1,9 +1,13 @@
 .. include:: ../importCSS.txt
 
-DCVoltage
-=========
+DC Voltage
+==========
 
 :red:`Information`
+
+.. figure:: VDC.png
+   :scale: 50%
+   :align: center
 
 A **DC voltage source** provides a **constant voltage** regardless of the current or circuit conditions. The output voltage remains fixed at a specified value:
 

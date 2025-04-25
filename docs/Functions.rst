@@ -32,6 +32,12 @@ The fundamental local functions of the behavioral modeling of analog elements re
 * **from:** pyams.lib
 * **library name:** *std.py*
 
+:red:`7. trap()`
+
+* **Application:** *trap( [Offset],[Initial],[Peak],[Initial delay time],[Rise time],[Pulse-width],[Fall time],[Period of wave])* genrate trapezoid or pulse function.
+* **from:** pyams.lib
+* **library name:** *std.py*
+
 :red:`5. vth()`
 
 * **Application:** *vth([value=tnom])* Thermal voltage function.
@@ -40,15 +46,29 @@ The fundamental local functions of the behavioral modeling of analog elements re
 
 :red:`6. toKelvin()`
 
-* **Application:** *toKelvin([value])* Degree to kelvin.
+* **Application:** *toKelvin([value])* temperature from degree to Kelvin.
 * **from:** pyams.lib
 * **library name:** *std.py*
 
-:red:`7. trap()`
+:red:`6. toCelsius()`
 
-* **Application:** *trap( [Initial],[Peak],[Initial delay time],[Rise time],[Pulse-width],[Fall time],[Period of wave])* genrate trapezoid or pulse function.
+* **Application:** *toCelsius([value])* temperature from Kelvin to degrees Celsius.
 * **from:** pyams.lib
 * **library name:** *std.py*
+
+:red:`6. qtemp()`
+
+* **Application:** *qtemp([temperature coefficient order 1],[temperature coefficient order 2],[value=temp])* Compute a quadratic temperature.
+* **from:** pyams.lib
+* **library name:** *std.py*
+
+:red:`5. exp_temp_factor()`
+
+* **Application:** *exp_temp_factor([value=temp])* Calculate the exponential temperature factor 1/(kT).
+* **from:** pyams.lib
+* **library name:** *std.py*
+
+
 
         
         

@@ -1,10 +1,15 @@
 .. include:: ../importCSS.txt
 
 
-SinVoltage
-==========
+Sin Voltage
+===========
 
 :red:`Information`
+
+.. figure:: SinVoltage.png
+   :scale: 50%
+   :align: center
+
 
 A **Sinusoidal Voltage Source** generates an **AC voltage waveform** that follows the equation:
 

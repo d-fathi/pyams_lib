@@ -5,6 +5,10 @@ CapacitorIc
 ===========
 
 :red:`Information`
+
+.. figure:: Capacitor.png
+   :scale: 50%
+   :align: center
  
 A **capacitor** is a passive electrical component that **stores electrical energy** in an **electric field**. The current flowing through a capacitor is proportional to the rate of change of voltage across it:
 

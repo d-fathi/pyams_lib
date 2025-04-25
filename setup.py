@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pyams_lib",
-    version="0.1.6.1",
+    version="0.1.7",
     author="Dhiabi.Fathi",
     author_email="dhiabi.fathi@gmail.com",
     description="Simulation modeling of analog and mixed-signal electronic elements and circuits",

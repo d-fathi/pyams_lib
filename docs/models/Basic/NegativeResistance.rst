@@ -4,6 +4,10 @@ Negative Resistance
 ===================
 
 :red:`Information`
+
+.. figure:: NegativeResistance.png
+   :scale: 50%
+   :align: center
  
 A **negative resistance** component exhibits an **inverse voltage-current relationship** compared to conventional resistors. Instead of an **increase in voltage** causing an **increase in current**, a negative resistor **decreases current** as voltage increases in certain operating ranges.
 

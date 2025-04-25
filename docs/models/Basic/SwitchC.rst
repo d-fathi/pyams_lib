@@ -7,10 +7,6 @@ Current-controlled switch
 
 .. role:: red
 
-:red:`Symbol`
-
-.. figure:: SwitchC.svg
-
 :red:`Information`
 
 .. figure:: SwitchC.png

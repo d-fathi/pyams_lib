@@ -43,7 +43,7 @@ def listSignalsParams(circuit)->list:
 
 
 
-from pyams.lib.PyAMS import floatToStr
+from pyams.lib.cpyams import floatToStr
 
 def getParams(elem)->list:
     """
@@ -52,7 +52,7 @@ def getParams(elem)->list:
     return [{'name': param.name, 'description': param.description, 'unit': param.unit, 'value': floatToStr(param.value)} for param in getattr(elem, 'getParams', lambda: [])()]
 
 
-from pyams.lib.PyAMS import circuit,signal,param,time
+from pyams.lib.cpyams import circuit,signal,param,time
 from pyams.lib.progressbar import displayBarPage
 import json;
 

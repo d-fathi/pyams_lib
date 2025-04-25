@@ -1,9 +1,13 @@
 .. include:: ../importCSS.txt
 
-SinCurrent
-==========
+Sin Current
+===========
 
 :red:`Information`
+
+.. figure:: SinCurrent.png
+   :scale: 50%
+   :align: center
 
 A **Sinusoidal Current Source** generates an **AC current waveform** that follows the equation:
 

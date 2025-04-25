@@ -6,6 +6,10 @@ PNP Transistor
 ==============
 
 :red:`Information`
+
+.. figure:: PNP.png
+   :scale: 50%
+   :align: center
   
 A **PNP transistor** is a three-terminal semiconductor device used for **amplification** and **switching** applications. In a PNP transistor, current flows from the emitter to the collector, controlled by the base current. It follows the **Ebers-Moll model** to define its behavior.
 

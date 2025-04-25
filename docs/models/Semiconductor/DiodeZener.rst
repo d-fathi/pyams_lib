@@ -7,6 +7,10 @@ Diode Zener
 
 :red:`Information`
 
+.. figure:: DiodeZener.png
+   :scale: 50%
+   :align: center
+
 A **Zener diode** is a special type of diode that allows current to flow in the forward direction like a standard diode but also permits current in the reverse direction when the voltage exceeds a certain **breakdown voltage**.
 
 The current-voltage relationship of a Zener diode follows the **Shockley diode equation** in forward bias and allows controlled conduction in reverse bias once breakdown voltage is reached.

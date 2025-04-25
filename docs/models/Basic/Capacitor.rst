@@ -7,6 +7,10 @@ Capacitor
 
 :red:`Information`
 
+.. figure:: Capacitor.png
+   :scale: 50%
+   :align: center
+
 A **capacitor** is a passive electrical component that **stores energy in an electric field**. It consists of two conductive plates separated by an insulating material (**dielectric**). The fundamental equation governing capacitors is:
 
 .. math::

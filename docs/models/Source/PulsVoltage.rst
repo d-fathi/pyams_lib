@@ -1,9 +1,13 @@
 .. include:: ../importCSS.txt
 
-PulsVoltage
-===========
+Puls Voltage
+============
 
 :red:`Information`
+
+.. figure:: PulsVoltage.png
+   :scale: 50%
+   :align: center
  
 A **Pulsed Voltage Source** generates a **square wave voltage signal** based on the following equation:
 

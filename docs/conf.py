@@ -22,8 +22,8 @@ copyright = '(c) 2021-2025, PyAMS Library'
 author = 'd.fathi'
 
 # The full version, including alpha/beta/rc tags
-release ='0.1.6'
-version='PyAMS Lib 0.1.6'
+release ='0.1.7'
+version='PyAMS Lib 0.1.7'
 
 
 # -- General configuration ---------------------------------------------------
@@ -44,8 +44,6 @@ mathjax_config = {
         'displayMath': [["\\[","\\]"] ],
     },
 }
-
-pdf_documents = [('index', 'PyAMS_Documentation', 'PyAMS Documentation', 'Your Name')]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['sphinx_rtd_theme']

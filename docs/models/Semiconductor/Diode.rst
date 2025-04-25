@@ -2,8 +2,12 @@
 
 .. include:: ../importCSS.txt
 
-Diode
-=====
+:red:`Information`
+
+.. figure:: Diode.png
+   :scale: 50%
+   :align: center
+  
 
 :red:`Information`
   

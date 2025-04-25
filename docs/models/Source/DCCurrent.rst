@@ -5,6 +5,10 @@ DCCurrent
 
 :red:`Information`
 
+.. figure:: IDC.png
+   :scale: 50%
+   :align: center
+
 A **DC current source** provides a **constant current**, regardless of voltage or circuit conditions. The output current remains fixed at a specified value:
 
 .. math::  

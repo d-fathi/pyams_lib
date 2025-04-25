@@ -5,6 +5,12 @@ Nonlinear Resistance
 ====================
 
 :red:`Information`
+
+
+.. figure:: NonlinearResistance.png
+   :scale: 50%
+   :align: center
+ 
  
 A **nonlinear resistor** is an electrical component whose **current-voltage (I-V) relationship** deviates from Ohm’s Law. Unlike a standard resistor where **I = V/R**, the current in a nonlinear resistor follows a **nonlinear function of voltage**.
 

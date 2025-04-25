@@ -7,6 +7,10 @@ Voltage-Controlled Switch
 
 :red:`Information`
 
+.. figure:: Switch.png
+   :scale: 50%
+   :align: center
+
 A **Voltage-Controlled Switch** is an electronic component that changes its resistance **based on a control voltage (Vc)**. The switch consists of an **internal resistor (Rs)** whose resistance dynamically changes between **Ron (low resistance)** and **Roff (high resistance)** depending on the control voltage.
 
 The switching behavior is defined as:

@@ -4,6 +4,10 @@ Current-Controlled Voltage Source (CCVS)
 =========================================
 
 :red:`Information`
+
+.. figure:: CCVS.png
+   :scale: 50%
+   :align: center
  
 A **Current-Controlled Voltage Source (CCVS)** is a dependent voltage source whose output voltage is proportional to a reference (control) current flowing through a separate circuit branch. The fundamental equation governing CCVS is:
 

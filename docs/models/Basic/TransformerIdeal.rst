@@ -5,6 +5,10 @@ Ideal Transformer
 
 :red:`Information`
 
+.. figure:: TransformerIdeal.png
+   :scale: 50%
+   :align: center
+
 An **ideal transformer** is a theoretical electrical device that transfers electrical energy between two circuits without any losses. It follows the **voltage and current transformation equations**:
 
 .. math::

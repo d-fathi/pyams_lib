@@ -4,6 +4,10 @@ Inductor with Initial Current
 =============================
 
 :red:`Information`
+
+.. figure:: Inductor.png
+   :scale: 50%
+   :align: center
  
 An **inductor** is a passive electrical component that **stores energy in a magnetic field** and **resists changes in current**.  
 This model implements an **inductor with an initial current (Ic)**, meaning it starts with a predefined current when the simulation begins.

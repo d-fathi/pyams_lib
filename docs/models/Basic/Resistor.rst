@@ -6,6 +6,11 @@ Resistor
 =========
 
 :red:`Information`
+
+
+.. figure:: Resistor.png
+   :scale: 50%
+   :align: center
   
 A **resistor** is a passive electrical component that **opposes the flow of electric current**. It follows **Ohm’s Law**, which defines the relationship between voltage, current, and resistance:
 

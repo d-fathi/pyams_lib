@@ -5,6 +5,10 @@ Voltage-Controlled Voltage Source (VCVS)
 
 :red:`Information`
 
+.. figure:: VCVS.png
+   :scale: 50%
+   :align: center
+
 A **Voltage-Controlled Voltage Source (VCVS)** is a dependent voltage source whose output voltage is proportional to a reference (control) voltage applied across a separate circuit branch. The fundamental equation governing VCVS is:
 
 .. math::  

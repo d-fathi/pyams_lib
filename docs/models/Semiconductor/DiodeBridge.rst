@@ -2,8 +2,12 @@
 
 .. include:: ../importCSS.txt
 
-Diode Bridge
-===========
+:red:`Information`
+
+.. figure:: DiodeBridge.png
+   :scale: 50%
+   :align: center
+
 
 :red:`Information`
 
