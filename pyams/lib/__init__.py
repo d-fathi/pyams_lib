@@ -7,4 +7,5 @@ from .options import *
 from .unewton import *
 from .utils import *
 from .dynamic import *
+from .digital import *
 

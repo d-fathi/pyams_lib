@@ -14,7 +14,7 @@
 </a>
  
  <a href="#News">
-    <img src="https://img.shields.io/badge/Version-0.1.7-blue" alt="V 0.1.7">
+    <img src="https://img.shields.io/badge/Version-0.1.8-blue" alt="V 0.1.8">
  </a>
   <a href="#Installation">
       <img src="https://img.shields.io/badge/Python->=3-blue" alt="Python 3+">
@@ -35,13 +35,14 @@
 
 ## What is `pyams-lib`?
 
-`pyams_lib` is a Python package designed to simplify the modeling of analog elements and the simulation of electronic circuits. It provides:
+`pyams_lib` is a Python package designed to simplify the modeling of analog and digital elements and the simulation of electronic circuits. It provides:
 
 - The ability to create custom models of electrical components.
 - Simulation of circuits in different modes of operation.
 - Visualization of simulation results using `matplotlib`.
 - Compatibility with Python 3+ and PyPy, working across Linux, Windows, and macOS.
 - PyAMS library (pyams_lib) documentation   <a href="https://pyams-lib.readthedocs.io/">https://pyams-lib.readthedocs.io/</a>.
+- For circuit design using the CAD system, visit the software section at <a href='https://pyams.sf.net/'>https://pyams.sf.net</a>.
 
 ## Installation
 
@@ -106,7 +107,11 @@ This example demonstrates a simple voltage divider circuit consisting of:
 - Two **resistors (R1 and R2)** connected in series.
 - The output voltage measured across **R2**.
 
-### Code:
+#### Circuit Diagram
+
+<img src="https://pyams-lib.readthedocs.io/en/latest/_images/Voltage_Divider.png" alt="Voltage_Divider">
+
+#### Code:
 
 ```python
 
@@ -120,7 +125,7 @@ R1= resistor('n1', 'n2')   # Resistor R1 between node 'n1' and 'n2'
 R2= resistor('n2', '0')    # Resistor R2 between node 'n2' and ground '0'
 
 # Set parameters for the elements
-V1.setParams("Vdc=10V")  # Set input voltage to 10V
+V1.setParams("Vdc=15V")  # Set input voltage to 10V
 R1.setParams("R=2kΩ")    # Set R1 to 2kΩ
 R2.setParams("R=2kΩ")    # Set R2 to 2kΩ
 
@@ -144,12 +149,17 @@ myCircuit.print('n2', R1.I)
 ### Expected Output:
 
 ```
-Output Voltage at node n2: 5.00 V
-Output current R1.I: 2.5 mA
+Output Voltage at node n2: 7.50 V
+Output current R1.I: 3.75 mA
 ```
 
 ---
 
 This example demonstrates how `pyams_lib` simplifies circuit simulation, making it easier to analyze electronic components and their behavior efficiently.
+
+##Support this project
+
+If you need more support or assistance with this project, and would like to contribute to the development of the PyAMS library, 
+consider donating through my Ko-fi page: <a href='https://ko-fi.com/pyams/'>https://ko-fi.com/pyams/</a>
 
 

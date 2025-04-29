@@ -13,21 +13,28 @@ class dsignal:
     Supports logical operations such as AND, OR, XOR, NOT, and arithmetic operations such as addition, subtraction, division, and modulus.
     Designed for use in digital circuits with input/output port support.
     """
-    def __init__(self, direction: str="out", port: str = '0', value: str='0', name: str = ''):
-        # Validate direction
+class dsignal:
+    def __init__(self, direction: str = "out", port: str = '0', value: str = '0', name: str = '', bitwidth: int = None):
         if direction not in {'in', 'out'}:
             raise ValueError("Direction must be 'in' or 'out'")
 
         self.direction = direction
         self.port = port
-        self._validate(value)
-        self._value = value
+        self.pindex = 0
         self._name = name or "dsignal"
+        self.bitwidth = bitwidth or len(value)
+        self._validate(value)
+        self._value = self._adjust_to_bitwidth(value)
 
     def _validate(self, value):
-        """Ensure the value contains only '0', '1', 'X', 'Z'"""
         if not all(bit in {'0', '1', 'X', 'Z'} for bit in value):
             raise ValueError("Value must contain only '0', '1', 'X', or 'Z'")
+
+    def _adjust_to_bitwidth(self, value: str) -> str:
+        if len(value) > self.bitwidth:
+            return value[-self.bitwidth:]  # اقتطع من اليسار
+        else:
+            return value.zfill(self.bitwidth)  # أكمل بالأصفار من اليسار
 
     @property
     def value(self) -> str:
@@ -36,7 +43,7 @@ class dsignal:
     @value.setter
     def value(self, new_value: str):
         self._validate(new_value)
-        self._value = new_value
+        self._value = self._adjust_to_bitwidth(new_value)
 
     @property
     def name(self) -> str:
@@ -124,11 +131,71 @@ class dcircuit:
         self.nodes = ['0']  # List of digital nodes, starting with ground
         self.outputs=[]
         self.tempOutputs=[]
+        self.x=[]
 
     def addDigitalElement(self,elm):
-        if hasattr(elm, 'digital') and callable(getattr(elem, 'digital')):
+        if hasattr(elm, 'digital') and callable(getattr(elm, 'digital')):
             self.cir+=[elm]
-            self.elem[elem.name]=elm
+            self.elem[elm.name]=elm
+
+    def classifyInOutSignals(self):
+        """
+        classify input and output dsignals from the digital circuit.
+            - inDSignals: List of input digital signals with details. (pos node , dsignal)
+            - outDSignals: List of output digital signals with details. (pos node , dsignal)
+            - dsignals:  Collect all signals from circuit elements.
+        """
+        self.inDSignals=[]
+        self.outDSignals=[]
+        self.dsignals=[]
+
+        for name, element in self.elem.items():
+            self.dsignals+=element.getDSignals()
+
+        for i in range(len(self.dsignals)):
+            signal_=self.dsignals[i]
+
+            if signal_.port in self.nodes:
+                signal_.pindex = self.nodes.index(signal_.port)
+            else:
+                self.nodes.append(signal_.port)
+                signal_.pindex= self.nodes.index(signal_.port)
+
+            if signal_.direction=='in':
+               self.inDSignals+=[[signal_,signal_.pindex]]
+            else:
+               self.outDSignals+=[[signal_,signal_.pindex]]
+
+        self.x = ['0'] * len(self.nodes)
+
+
+
+    def feval(self):
+      """
+      Evaluate the circuit digital
+      """
+
+      for  signal,pos in self.outDSignals:
+           self.x[pos] =signal.value
+
+      for  signal,pos in self.inDSignals:
+           signal.value = self.x[pos]
+
+      for element in self.cir:
+          element.digital()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

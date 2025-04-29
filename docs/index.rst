@@ -22,7 +22,7 @@ Welcome to PyAMS Library documentation
 What is `pyams.lib`?
 ********************
 
-`pyams.lib` is a Python package designed to simplify the modeling of analog elements and the simulation of electronic circuits. It provides:
+`pyams.lib` is a Python package designed to simplify the modeling of analog and digital elements and the simulation of electronic circuits. It provides:
 
 - The ability to create custom models of electrical components.
 - Simulation of circuits in different modes of operation.
@@ -31,6 +31,7 @@ What is `pyams.lib`?
 - pip install pyams.lib: `<https://pypi.org/project/pyams.lib/>`_
 - PyAMS library (pyams.lib) documentation : `<https://pyams-lib.readthedocs.io/>`_
 - github project: `<https://github.com/d-fathi/pyams.lib/>`_
+
 
 .. panels::
 
@@ -93,9 +94,12 @@ Table of Contents
   Release_History.rst
   Installation.rst
   Modeling.rst
+  ModelingDigital.rst
+  ParametersFunctions.rst
   Simulation.rst
   Models.rst
   Examples.rst
+  WebPage.rst
   Donate.rst
 .. End
 

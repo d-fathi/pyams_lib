@@ -401,10 +401,13 @@ class model:
             str: Summary of the model's signals and parameters.
         """
         signals = self.getSignals()
+        dsignals = self.getDSignals()
         params = self.getParams()
         signals_str = "\n".join([str(signal) for signal in signals])
+        dsignals_str = "\n".join([str(dsignal) for dsignal in dsignals])
         params_str = "\n".join([f"{param.name}: {param.value} {param.unit} ({param.description})" for param in params])
-        return f"Model:\nSignals:\n{signals_str}\n\nParameters:\n{params_str}"
+        line='-----------------------------------------------------------------'
+        return f"{line}\nModel:{self.name}\n{line}\nSignals:\n{signals_str}\n{dsignals_str}\nParameters:\n{params_str}"
 
 #-------------------------------------------------------------------------------
 # time..temp: List of paramatres
@@ -477,6 +480,7 @@ class circuit:
             self.cir+=[element]
 
         lenElements=len(self.cir)
+
         i=0;
 
         while (i<lenElements):
@@ -491,6 +495,9 @@ class circuit:
                 self.cir+=[newElms[j]]
             lenElements=len(self.cir)
          i=i+1
+
+        self.cir = [elem for elem in self.cir if hasattr(elem, 'analog') and callable(getattr(elem, 'analog'))]
+
 
 
 
@@ -549,6 +556,8 @@ class circuit:
             else:
                 self.inSignalsPotential+=[[signalIn,node1, node2]]
 
+        self.dcircuit.classifyInOutSignals()
+
 
 
 
@@ -597,10 +606,6 @@ class circuit:
       for  signal,signalPotential, dierction in self.inSignalsFlow:
             signal.value = dierction*x[signalPotential.posflow];
 
-
-
-
-
       for element in self.cir:
           element.analog()
 
@@ -641,13 +646,14 @@ class circuit:
         '''
          using for start excute circuit.
         '''
-        self.addElements(self.elem)
+        #self.addElements(self.elem)
         self.classifyInOutSignals()
         self.getSize()
         self.start()
 
 
     def getOpertingPoint(self):
+        self.dcircuit.feval();
         self.x,s=solven(self.x,self.feval,self.option)
         return self.x
 
@@ -660,7 +666,10 @@ class circuit:
         self.outputs=[]
         for i in range(len(outputs)):
             if(type(outputs[i])==str):
-                self.outputs+=[{'type':'node','pos':self.nodes.index(outputs[i]),'data':[]}]
+                if outputs[i] in self.nodes:
+                  self.outputs+=[{'type':'node','pos':self.nodes.index(outputs[i]),'data':[]}]
+                elif outputs[i] in self.dcircuit.nodes:
+                  self.outputs+=[{'type':'dnode','pos':self.dcircuit.nodes.index(outputs[i]),'data':[]}]
             elif(type(outputs[i])==signal):
                 self.outputs+=[{'type':'signal','pos':outputs[i],'data':[]}]
             elif(type(outputs[i])==param):
@@ -692,6 +701,8 @@ class circuit:
             data=out['data']
             if(out['type']=='node'):
                 data+=[self.x[pos-1]]
+            elif(out['type']=='dnode'):
+                data+=[self.dcircuit.x[pos]]
             else:
                 data+=[pos.value]
 
@@ -710,25 +721,60 @@ class circuit:
       # Assume the first output is the x-axis
       x_data = self.outputs[0]['data']
 
-      plt.figure(figsize=(10, 6))
+      ndigitalPlot=0
+      nanalogPlot=0
+
+
+      for i in range(1,len(self.outputs)):
+        print(self.outputs[i]['type'])
+        if(self.outputs[i]['type']=='dnode'):
+            ndigitalPlot+=1
+        else:
+            nanalogPlot=1
+
+
+
+
+      fig, axs = plt.subplots(ndigitalPlot+nanalogPlot)
+      if ndigitalPlot + nanalogPlot == 1:
+           axs = [axs]
+
+      #plt.figure(figsize=(10, 6))
+      j=-1;
       for i in range(1, len(self.outputs)):
+         digital=False
          y_data = self.outputs[i]['data']
+         if(self.outputs[i]['type']=='dnode'):
+            j+=1
+            digital=True
          label = f"Output {i}: {self.outputs[i]['type']}"
-         if self.outputs[i]['type'] == 'node':
+         if self.outputs[i]['type'] == 'dnode':
+             label = f"Node {self.dcircuit.nodes[self.outputs[i]['pos']]}"
+         elif self.outputs[i]['type'] == 'node':
              label = f"Node {self.nodes[self.outputs[i]['pos']]}"
          elif isinstance(self.outputs[i]['pos'], signal):
              label = f"Signal {self.outputs[i]['pos'].name_}"
          elif isinstance(self.outputs[i]['pos'], param):
              label = f"Parameter {self.outputs[i]['pos'].name_}"
 
-         plt.plot(x_data, y_data, label=label)
+         if(digital):
+           pos=j+nanalogPlot
+           print(pos)
+           axs[pos].plot(x_data, y_data, label=label)
+           axs[pos].set(ylabel=label)
+           axs[pos].grid(True)
+         else:
+           pos=0
+           axs[pos].plot(x_data, y_data, label=label)
+           axs[pos].set(ylabel='Outputs')
+           axs[pos].legend()
+           axs[pos].grid(True)
 
-      plt.xlabel("Time (s)" if self.analysis_['mode'] == 'tran' else "Parameter Variation")
-      plt.ylabel("Output Values")
-      plt.title("Circuit Outputs")
-      plt.legend()
-      plt.grid(True)
-      plt.tight_layout()
+
+
+      xlabel = "Time (s)" if self.analysis_['mode'] == 'tran' else "Parameter Variation"
+      fig.supxlabel(xlabel)
+      fig.suptitle("Circuit Outputs")
       plt.show()
 
 
@@ -738,8 +784,12 @@ class circuit:
         '''
         for i in range(len(outputs)):
            if(type(outputs[i])==str):  #output it's node
-               output_voltage = self.x[self.nodes.index(outputs[i]) - 1]  # Get voltage at node outputs[i]
-               print(f"Output Voltage at node {outputs[i]}: {output_voltage:.2f} V")
+               if outputs[i] in self.nodes:
+                 output_voltage = self.x[self.nodes.index(outputs[i]) - 1]  # Get voltage at node outputs[i]
+                 print(f"Output Voltage at node {outputs[i]}: {output_voltage:.2f} V")
+               if outputs[i] in self.dcircuit.nodes:
+                 output_digital = self.dcircuit.x[self.dcircuit.nodes.index(outputs[i]) ]  # Get digial at node outputs[i]
+                 print(f"Output Digital at node {outputs[i]}: {output_digital}")
            else:  #it's signal or param or model(element)
              print(outputs[i])
 
