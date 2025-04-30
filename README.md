@@ -58,9 +58,11 @@ To upgrade to the latest version:
 pip install --upgrade pyams_lib
 ```
 
+
 ## License
 
 `pyams_lib` is free to use and distributed under the **GPLv3** license.
+
 
 ---
 
