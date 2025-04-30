@@ -16,7 +16,7 @@ Welcome to PyAMS Library documentation
     :target: https://pypi.org/project/pyams-lib/
 
 .. image:: https://img.shields.io/github/license/d-fathi/pyams.lib.svg
-    :target: https://github.com/d-fathi/pyams.lib/blob/main/LICENSE
+    :target: https://github.com/d-fathi/pyams_lib/blob/main/LICENSE
 
 ********************
 What is `pyams.lib`?
@@ -30,7 +30,7 @@ What is `pyams.lib`?
 - Compatibility with Python 3+ and PyPy, working across Linux, Windows, and macOS.
 - pip install pyams.lib: `<https://pypi.org/project/pyams.lib/>`_
 - PyAMS library (pyams.lib) documentation : `<https://pyams-lib.readthedocs.io/>`_
-- github project: `<https://github.com/d-fathi/pyams.lib/>`_
+- github project: `<https://github.com/d-fathi/pyams_lib/>`_
 
 
 .. panels::
