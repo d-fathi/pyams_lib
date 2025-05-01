@@ -98,6 +98,7 @@ Table of Contents
   ParametersFunctions.rst
   Simulation.rst
   Models.rst
+  DSignal.rst
   Examples.rst
   WebPage.rst
   Donate.rst

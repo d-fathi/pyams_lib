@@ -13,7 +13,6 @@ class dsignal:
     Supports logical operations such as AND, OR, XOR, NOT, and arithmetic operations such as addition, subtraction, division, and modulus.
     Designed for use in digital circuits with input/output port support.
     """
-class dsignal:
     def __init__(self, direction: str = "out", port: str = '0', value: str = '0', name: str = '', bitwidth: int = None):
         if direction not in {'in', 'out'}:
             raise ValueError("Direction must be 'in' or 'out'")
@@ -116,6 +115,26 @@ class dsignal:
         self.value = (self % other).value
         return self
 
+    def __lshift__(self, bits):
+      """Left shift the binary string (logical shift left)"""
+      if not isinstance(bits, int):
+          raise TypeError("Shift amount must be an integer")
+
+      # Shift left by appending zeros and truncating left bits
+      shifted_value = self.value[bits:] + '0' * bits
+      return dsignal(self.direction, self.port, shifted_value)
+
+    def __rshift__(self, bits):
+      """Right shift the binary string (logical shift right)"""
+      if not isinstance(bits, int):
+         raise TypeError("Shift amount must be an integer")
+
+      # Shift right by prepending zeros and truncating right bits
+      shifted_value = '0' * bits + self.value
+      shifted_value = shifted_value[:len(self.value)]
+      return dsignal(self.direction, self.port, shifted_value)
+
+
 
 class dcircuit:
     """
@@ -202,29 +221,13 @@ class dcircuit:
 if __name__ == '__main__':
 
   # Example usage
-  A = dsignal("out", "A", "1")
-  B = dsignal("out", "B", "1")
-  C = dsignal("out", "C", "0000")
+  A0 = dsignal("out", "A", "1")
+  A1 = dsignal("out", "A", "01")
+  A2 = dsignal("out", "A", "1")
+  A3 = dsignal("out", "A", "1")
 
-  print("A      =", A)
-  print("B      =", B)
-  C += A + B  # Perform C += A + B as an arithmetic operation
-  print("C += A + B  =", C)
-  print("A - B  =", A - B)   # Subtraction
-  print("A / B  =", A / B)   # Division
-  print("A % B  =", A % B)   # Modulus
+  D = A0 + (A1 << 1) + (A2 << 2) + (A3 << 3)
 
-
-  class AND:
-    def __init__(self,In1,In2,Out):
-        self.In1=dsignal('in',In1,'11')
-        self.In2=dsignal('in',In2,'11')
-        self.Out=dsignal('out',Out)
-
-
-    def digital(self):
-        self.Out+=self.In1+self.In2
-        print(self.Out)
-        self.Out+=self.In1+self.In2
-        print(self.Out)
+  print("D      =", A1 << 1)
+  print(type(D))
 
