@@ -22,8 +22,8 @@ copyright = '(c) 2021-2025, PyAMS Library'
 author = 'd.fathi'
 
 # The full version, including alpha/beta/rc tags
-release ='0.1.9'
-version='PyAMS Lib 0.1.9'
+release ='0.2.0'
+version='PyAMS Lib 0.2.0'
 
 
 # -- General configuration ---------------------------------------------------

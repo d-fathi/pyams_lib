@@ -2,6 +2,7 @@
 # Name:        digital
 # Author:      d.fathi
 # Created:     03/04/2025
+# Update:      02/05/2025
 # Copyright:   (c) pyams 2025
 # Licence:     free GPLv3
 #-------------------------------------------------------------------------------
@@ -13,6 +14,7 @@ class dsignal:
     Supports logical operations such as AND, OR, XOR, NOT, and arithmetic operations such as addition, subtraction, division, and modulus.
     Designed for use in digital circuits with input/output port support.
     """
+
     def __init__(self, direction: str = "out", port: str = '0', value: str = '0', name: str = '', bitwidth: int = None):
         if direction not in {'in', 'out'}:
             raise ValueError("Direction must be 'in' or 'out'")
@@ -21,6 +23,8 @@ class dsignal:
         self.port = port
         self.pindex = 0
         self._name = name or "dsignal"
+        if isinstance(value, int):
+            value = bin(value)[2:]
         self.bitwidth = bitwidth or len(value)
         self._validate(value)
         self._value = self._adjust_to_bitwidth(value)
@@ -31,9 +35,9 @@ class dsignal:
 
     def _adjust_to_bitwidth(self, value: str) -> str:
         if len(value) > self.bitwidth:
-            return value[-self.bitwidth:]  # اقتطع من اليسار
+            return value[-self.bitwidth:]
         else:
-            return value.zfill(self.bitwidth)  # أكمل بالأصفار من اليسار
+            return value.zfill(self.bitwidth)
 
     @property
     def value(self) -> str:
@@ -41,6 +45,8 @@ class dsignal:
 
     @value.setter
     def value(self, new_value: str):
+        if isinstance(new_value, int):
+            new_value = bin(new_value)[2:]
         self._validate(new_value)
         self._value = self._adjust_to_bitwidth(new_value)
 
@@ -58,9 +64,12 @@ class dsignal:
         return f"{self.name} ({self.direction}): {self.value} on port {self.port}"
 
     def _bitwise_operation(self, other, op):
-        """Perform logical operations with support for X and Z values."""
+        if isinstance(other, int):
+            other = bin(other)[2:]
+        if isinstance(other, str):
+            other = dsignal(self.direction, self.port, other)
         if not isinstance(other, dsignal):
-            raise TypeError("Operand must be an instance of dsignal")
+            raise TypeError("Operand must be dsignal, int, or str")
 
         min_length = min(len(self.value), len(other.value))
         result = ''
@@ -79,31 +88,48 @@ class dsignal:
     def __and__(self, other): return self._bitwise_operation(other, 'AND')
     def __or__(self, other): return self._bitwise_operation(other, 'OR')
     def __xor__(self, other): return self._bitwise_operation(other, 'XOR')
+    def __rand__(self, other): return self._bitwise_operation(other, 'AND')
+    def __ror__(self, other): return self._bitwise_operation(other, 'OR')
+    def __rxor__(self, other): return self._bitwise_operation(other, 'XOR')
 
     def __invert__(self):
-        """Perform NOT operation with support for 'X' and 'Z'"""
         result = ''.join('0' if bit == '1' else '1' if bit == '0' else 'X' for bit in self.value)
         return dsignal(self.direction, self.port, result)
 
     def _to_decimal(self):
-        """Convert the binary value to a decimal number."""
         return int(self.value.replace('X', '0').replace('Z', '0'), 2)
 
     def _from_decimal(self, num, length):
-        """Convert a decimal number to a `dsignal` value with the same original length."""
-        return bin(num)[2:].zfill(length)
+        bin_str = bin(num & ((1 << length) - 1))[2:]
+        return bin_str.zfill(length)
+
+    def _ensure_dsignal(self, other):
+        if isinstance(other, int):
+            other = self._from_decimal(other, len(self.value))
+        if isinstance(other, str):
+            other = dsignal(self.direction, self.port, other)
+        return other
 
     def __add__(self, other):
+        other = self._ensure_dsignal(other)
         return dsignal(self.direction, self.port, self._from_decimal(self._to_decimal() + other._to_decimal(), len(self.value)))
     def __sub__(self, other):
+        other = self._ensure_dsignal(other)
         return dsignal(self.direction, self.port, self._from_decimal(self._to_decimal() - other._to_decimal(), len(self.value)))
     def __truediv__(self, other):
+        other = self._ensure_dsignal(other)
         return dsignal(self.direction, self.port, self._from_decimal(self._to_decimal() // other._to_decimal(), len(self.value)))
     def __mod__(self, other):
+        other = self._ensure_dsignal(other)
         return dsignal(self.direction, self.port, self._from_decimal(self._to_decimal() % other._to_decimal(), len(self.value)))
 
+    def __radd__(self, other): return self + other
+    def __rsub__(self, other): return dsignal(self.direction, self.port, self._from_decimal(other - self._to_decimal(), len(self.value)))
+    def __rtruediv__(self, other): return dsignal(self.direction, self.port, self._from_decimal(other // self._to_decimal(), len(self.value)))
+    def __rmod__(self, other): return dsignal(self.direction, self.port, self._from_decimal(other % self._to_decimal(), len(self.value)))
+
     def __iadd__(self, other):
-        self.value =  other.value
+        self.value = other.value
         return self
     def __isub__(self, other):
         self.value = (self - other).value
@@ -116,23 +142,21 @@ class dsignal:
         return self
 
     def __lshift__(self, bits):
-      """Left shift the binary string (logical shift left)"""
-      if not isinstance(bits, int):
-          raise TypeError("Shift amount must be an integer")
-
-      # Shift left by appending zeros and truncating left bits
-      shifted_value = self.value[bits:] + '0' * bits
-      return dsignal(self.direction, self.port, shifted_value)
+        if not isinstance(bits, int):
+            raise TypeError("Shift amount must be an integer")
+        shifted_value = self.value[bits:] + '0' * bits
+        return dsignal(self.direction, self.port, shifted_value)
 
     def __rshift__(self, bits):
-      """Right shift the binary string (logical shift right)"""
-      if not isinstance(bits, int):
-         raise TypeError("Shift amount must be an integer")
+        if not isinstance(bits, int):
+            raise TypeError("Shift amount must be an integer")
+        shifted_value = '0' * bits + self.value
+        shifted_value = shifted_value[:len(self.value)]
+        return dsignal(self.direction, self.port, shifted_value)
 
-      # Shift right by prepending zeros and truncating right bits
-      shifted_value = '0' * bits + self.value
-      shifted_value = shifted_value[:len(self.value)]
-      return dsignal(self.direction, self.port, shifted_value)
+
+
+
 
 
 
@@ -209,25 +233,22 @@ class dcircuit:
 
 
 
-
-
-
-
-
-
-
-
-
+# Example usage
 if __name__ == '__main__':
+    A = dsignal(value="1101")
+    B = dsignal(value="1011")
 
-  # Example usage
-  A0 = dsignal("out", "A", "1")
-  A1 = dsignal("out", "A", "01")
-  A2 = dsignal("out", "A", "1")
-  A3 = dsignal("out", "A", "1")
+    print("A & B =", (A & B).value)
+    print("A | 5 =", (A | 5).value)
+    print("3 ^ A =", (3 ^ A).value)
+    print("~A =", (~A).value)
+    print("A + 2 =", (A + 2).value)
+    print("A - 2 =", (A - 2).value)
 
-  D = A0 + (A1 << 1) + (A2 << 2) + (A3 << 3)
-
-  print("D      =", A1 << 1)
-  print(type(D))
-
+    B = dsignal(value="0000")
+    B+=B+"000"
+    print("B =", B.value)
+    B+=B+1
+    print("B =", B.value)
+    B+=B+1
+    print("B =", B.value)
