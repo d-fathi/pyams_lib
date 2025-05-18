@@ -42,7 +42,7 @@ The following Python script simulates the full-wave bridge rectifier circuit usi
 .. code-block:: python
 
    from pyams.lib import circuit
-   from models import Resistor, SinVoltage, DiodeBridge
+   from pyams.models import Resistor, SinVoltage, DiodeBridge
    
    # Define Components
    R1 = Resistor("Vout", "0")

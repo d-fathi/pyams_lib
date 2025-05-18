@@ -557,6 +557,7 @@ class circuit:
                 self.inSignalsPotential+=[[signalIn,node1, node2]]
 
         self.dcircuit.classifyInOutSignals()
+        self.dcircuit.findMixedSignals(parent=self)
 
 
 
@@ -653,8 +654,8 @@ class circuit:
 
 
     def getOpertingPoint(self):
-        self.dcircuit.feval();
         self.x,s=solven(self.x,self.feval,self.option)
+        self.dcircuit.feval();
         return self.x
 
     def setOutPuts(self,*outputs):
@@ -672,6 +673,8 @@ class circuit:
                   self.outputs+=[{'type':'dnode','pos':self.dcircuit.nodes.index(outputs[i]),'data':[]}]
             elif(type(outputs[i])==signal):
                 self.outputs+=[{'type':'signal','pos':outputs[i],'data':[]}]
+            elif(type(outputs[i])==dsignal):
+                self.outputs+=[{'type':'dsignal','pos':outputs[i],'data':[]}]
             elif(type(outputs[i])==param):
                 self.outputs+=[{'type':'param','pos':outputs[i],'data':[]}]
 
@@ -726,7 +729,7 @@ class circuit:
 
 
       for i in range(1,len(self.outputs)):
-        print(self.outputs[i]['type'])
+
         if(self.outputs[i]['type']=='dnode'):
             ndigitalPlot+=1
         else:
@@ -759,7 +762,6 @@ class circuit:
 
          if(digital):
            pos=j+nanalogPlot
-           print(pos)
            axs[pos].plot(x_data, y_data, label=label)
            axs[pos].set(ylabel=label)
            axs[pos].grid(True)

@@ -42,7 +42,7 @@ The following Python script simulates the RL circuit using the **PyAMS library**
 .. code-block:: python
 
    from pyams.lib import circuit
-   from models import Resistor, SquareVoltage, Inductor
+   from pyams.models import Resistor, SquareVoltage, Inductor
 
    # Define components
    R1 = Resistor("Vin", "Vout")

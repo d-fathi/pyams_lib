@@ -113,7 +113,7 @@ The following Python script models the RLC circuit using `pyams.lib`:
 .. code-block:: python
 
    from pyams.lib import circuit
-   from models import Resistor, DCVoltage, Capacitor, Inductor
+   from pyams.models import Resistor, DCVoltage, Capacitor, Inductor
 
    # Define circuit elements
    V1 = DCVoltage("Vin", "0")

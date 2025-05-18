@@ -39,7 +39,7 @@ The following Python script simulates the LC oscillator using the **PyAMS librar
 .. code-block:: python
 
    from pyams.lib import circuit
-   from models import Inductor, CapacitorIc
+   from pyams.models import Inductor, CapacitorIc
    from math import pi
 
    # Define components

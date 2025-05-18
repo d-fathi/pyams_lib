@@ -2,7 +2,7 @@
 # Name:        digital
 # Author:      d.fathi
 # Created:     03/04/2025
-# Update:      02/05/2025
+# Update:      01/05/2025
 # Copyright:   (c) pyams 2025
 # Licence:     free GPLv3
 #-------------------------------------------------------------------------------
@@ -176,6 +176,12 @@ class dcircuit:
         self.tempOutputs=[]
         self.x=[]
 
+        self.Vih=3.5
+        self.Vil=0.5
+
+        self.Voh=5
+        self.Vol=0
+
     def addDigitalElement(self,elm):
         if hasattr(elm, 'digital') and callable(getattr(elm, 'digital')):
             self.cir+=[elm]
@@ -211,6 +217,72 @@ class dcircuit:
 
         self.x = ['0'] * len(self.nodes)
 
+    def convertMixedValues(self,parent):
+        '''
+        for mixed signals convert values
+        Analog to Digital and Digital to Analog)
+        '''
+         #for mixed signals (Analog to Digital)
+        self.Vih=parent.option.Vih            # Logic High for Minimum Input Voltage
+        self.Vil=parent.option.Vil            # Logic Low for Maximum Input Voltage
+        #for mixed signals (Digital to Analog)
+        self.Voh=parent.option.Voh            # Output Voltage for Logic High
+        self.Vol=parent.option.Vol            # Output Voltage for Logic Low
+
+
+    def findMixedSignals(self,parent):
+        """
+        Find mixed signals in the circuit.
+        """
+        from pyams.lib.cpyams import signal,voltage
+        analogNodes=parent.nodes
+        self.convertMixedValues(parent)
+
+        self.inNodes=[]
+        self.outNodes=[]
+        self.digital_analog=[]
+        self.analog_digital=[]
+        self.pCircuit=parent
+
+        for i in range(len(self.dsignals)):
+            signal_=self.dsignals[i]
+            if signal_.port in analogNodes:
+                if signal_.direction=='in':
+                    self.inNodes+=[self.nodes.index(signal_.port)]
+                    self.analog_digital+=[parent.nodes.index(signal_.port)]
+                else:
+                    self.outNodes+=[self.nodes.index(signal_.port)]
+                    newSignal=signal('out',voltage,signal_.port)
+                    newSignal.value=0
+                    self.digital_analog+=[newSignal]
+                    parent.outSignals+=[[True,parent.nodes.index(signal_.port),0,newSignal]]
+
+    def executeMixedSignals(self):
+        """
+        Execute mixed signals in the circuit.
+        """
+        self.ax=self.pCircuit.x
+        for i in range(len(self.analog_digital)):
+            pos_a=self.analog_digital[i]-1
+            pos_d=self.inNodes[i]
+            if self.ax[pos_a]<=self.Vil:
+                self.x[pos_d]='0'
+            elif self.ax[pos_a]>=self.Vih:
+                self.x[pos_d]='1'
+
+        for i in range(len(self.digital_analog)):
+            pos_d=self.outNodes[i]
+            signal_=self.digital_analog[i]
+
+            if self.x[pos_d]=='0':
+                signal_.value=self.Vol
+            elif self.x[pos_d]=='1':
+                signal_.value=self.Voh
+
+            ''''
+            else:
+                self.x[self.analog_digital[i]]='X'
+            '''
 
 
     def feval(self):
@@ -223,6 +295,8 @@ class dcircuit:
 
       for  signal,pos in self.inDSignals:
            signal.value = self.x[pos]
+
+      self.executeMixedSignals()
 
       for element in self.cir:
           element.digital()

@@ -33,6 +33,13 @@ class option:
         self.interval = 100     # Interval for interactive simulation (milliseconds)
         self.circuit=circuit    # Circuit used
 
+        #for mixed signals (Analog to Digital)
+        self.Vih=3.5            # Logic High for Minimum Input Voltage
+        self.Vil=0.5            # Logic Low for Maximum Input Voltage
+        #for mixed signals (Digital to Analog)
+        self.Voh=5              # Output Voltage for Logic High
+        self.Vol=0              # Output Voltage for Logic Low
+
     def setOption(self, options: dict):
         """
         Update simulation options based on a provided dictionary.
@@ -65,6 +72,14 @@ class option:
                     self.integration = 2
             elif key == 'interval':
                 self.interval = int(value)
+            elif key == 'Voh':
+                self.Voh = float_(value)
+            elif key == 'Vol':
+                self.Vol = float_(value)
+            elif key == 'Vih':
+                self.Vih = float_(value)
+            elif key == 'Vil':
+                self.Vil = float_(value)
 
 
 

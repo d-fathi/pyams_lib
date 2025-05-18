@@ -63,7 +63,7 @@ Python Simulation Code
            self.I += self.V / self.R
 
    from pyams.lib import circuit
-   from models import DCVoltage
+   from pyams.models import DCVoltage
 
    # Define elements
    V1 = DCVoltage('n1', '0')

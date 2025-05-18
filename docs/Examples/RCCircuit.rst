@@ -42,7 +42,7 @@ The following Python script simulates the RC circuit using the **PyAMS library**
 .. code-block:: python
 
    from pyams.lib import circuit
-   from models import Resistor, SquareVoltage, Capacitor
+   from pyams.models import Resistor, SquareVoltage, Capacitor
 
    # Define components
    R1 = Resistor("Vin", "Vout")

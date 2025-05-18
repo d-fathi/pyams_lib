@@ -52,7 +52,7 @@ The following Python script simulates the **Van der Pol Oscillator** using the *
            self.I += self.\u03bc * self.V * (self.V * self.V - 1)
 
    from pyams.lib import circuit
-   from models import CapacitorIc, InductorIc
+   from pyams.models import CapacitorIc, InductorIc
 
    # Define Components
    R1 = NonlinearResistance("Vout", "0")
@@ -93,7 +93,7 @@ Below is the Python code used to simulate the Van der Pol oscillator with  diffe
 
 
    from pyams.lib import circuit
-   from models import CapacitorIc, InductorIc
+   from pyams.models import CapacitorIc, InductorIc
 
    R1 = NonlinearResistance("Vout","0")
    C1 = CapacitorIc("Vout","0")

@@ -1,6 +1,7 @@
 Release History
 ===============
 
+- **Version 0.2.1 (18/05/2025)**: Converting analog to digital and digital to analog with option.
 - **Version 0.2.0 (02/05/2025)**: Add int and str(digital) operations in ``dsignal`` class.
 - **Version 0.1.9 (01/05/2025)**: Add shift operations and update ``dsignal`` class.
 - **Version 0.1.8 (28/04/2025)**: New digital signals and function for modeling digital components.
@@ -12,4 +13,3 @@ Release History
 - **Version 0.1.2 (21/03/2025)**: Updated basic  models.
 - **Version 0.1.1 (20/03/2025)**: Created models directory.
 - **Version 0.1.0 (19/03/2025)**: Updated ``pyams.lib``.
-

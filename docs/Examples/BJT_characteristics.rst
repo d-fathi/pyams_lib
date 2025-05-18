@@ -46,7 +46,7 @@ The following Python script simulates the BJT characteristics using the **PyAMS 
 .. code-block:: python
 
     from pyams.lib import circuit
-    from models import DCCurrent, DCVoltage, NPN, Resistor
+    from pyams.models import DCCurrent, DCVoltage, NPN, Resistor
     import matplotlib.pyplot as plt
 
     # Define elements
