@@ -8,4 +8,5 @@ The elements in the circuit  are designed by the symbol editor it presented PyAM
 .. toctree::
    :maxdepth: 2
   models/Analog/index.rst
+  models/Digital/index.rst
 .. End

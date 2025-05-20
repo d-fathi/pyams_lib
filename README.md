@@ -14,7 +14,7 @@
 </a>
  
  <a href="#News">
-    <img src="https://img.shields.io/badge/Version-0.2.1-blue" alt="V 0.2.1">
+    <img src="https://img.shields.io/badge/Version-0.2.2-blue" alt="V 0.2.2">
  </a>
   <a href="#Installation">
       <img src="https://img.shields.io/badge/Python->=3-blue" alt="Python 3+">
