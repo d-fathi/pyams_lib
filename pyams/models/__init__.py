@@ -57,3 +57,14 @@ from .Digital.Gate.XOR import *
 from .Digital.Source.Clk import *
 from .Digital.Source.High import *
 from .Digital.Source.Low import *
+from .Digital.Combinational.BCDto7Segment import *
+from .Digital.Combinational.Decoder2to4 import *
+from .Digital.Combinational.Decoder3to8 import *
+from .Digital.Combinational.DEMUX1to2 import *
+from .Digital.Combinational.DEMUX1to4 import *
+from .Digital.Combinational.Encoder4to2 import *
+from .Digital.Combinational.FullAdder import *
+from .Digital.Combinational.HalfAdder import *
+from .Digital.Combinational.MUX2to1 import *
+from .Digital.Combinational.MUX4to1 import *
+

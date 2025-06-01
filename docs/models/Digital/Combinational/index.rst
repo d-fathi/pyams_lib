@@ -27,4 +27,6 @@ helf adders, full adders, multiplexers, demultiplexers, encoders, decoders, and 
   Decoder.rst
   7SegmentDecoder.rst
   Comparator.rst
+  Comparator2bits.rst
+  Comparator4bits.rst
 .. End

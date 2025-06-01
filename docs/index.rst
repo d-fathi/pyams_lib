@@ -59,10 +59,15 @@ What is `pyams.lib`?
 
     ---
     
-
     :ref:`Analog-devices <Analog-devices>`
 
-    PyAMS Elements and Models.
+    PyAMS elements and models of analog.
+
+    ---
+    
+    :ref:`Digital-devices <Digital-devices>`
+
+    PyAMS elements and models of digital.
 
     ---
 

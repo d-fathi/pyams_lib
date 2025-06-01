@@ -1,4 +1,4 @@
-.. _Analog-devices:
+.. _Digital-devices:
 
 Digital Models
 =========================
@@ -8,6 +8,7 @@ A collection of PyAMS models for Digital elements.
    :maxdepth: 2
   Gate/index.rst
   Combinational/index.rst
+  Source/index.rst
 .. Sequential/index.rst
   Memory/index.rst
   Source/index.rst
