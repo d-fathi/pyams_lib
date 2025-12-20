@@ -78,6 +78,13 @@ def str_to_float(value: str) -> float:
 
 def value(v):
     return str_to_float(v)
+
+def newNode():
+    """Create and return a new unique node number."""
+    if not hasattr(newNode, "_counter"):
+        newNode._counter = 0
+    newNode._counter += 1
+    return f"N{newNode._counter:03d}"
     
 
 

@@ -3,7 +3,7 @@ Release History
 This document provides a detailed history of the releases for the `pyams.lib` library, 
 including version numbers, release dates, and a brief description of the changes made in each version.
 
-
+- **Version 0.2.4 (20/12/2025)**: Used NumPy to solve electrical systems.
 - **Version 0.2.3 (01/06/2025)**: Add Source Logic models.
 - **Version 0.2.2 (20/05/2025)**: Add Combinational Logic models.
 - **Version 0.2.1 (18/05/2025)**: Converting analog to digital and digital to analog with option.

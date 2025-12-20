@@ -1,9 +1,7 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
+# Name:        solver
 # Purpose:
-#
 # Author:      dhiab fathi
-#
 # Created:     08/01/2025
 # Copyright:   (c) dhiab fathi 2025
 # Licence:     <your licence>

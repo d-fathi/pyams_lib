@@ -236,6 +236,7 @@ def ddt(signal,initialValue=0.0)->float:
 
 # Integration Method by option in circuit
 def idt(signal,initialValue=0.0)->float:
+   return idt_gear(signal,initialValue);
    if signal.integr==1:
      return idt_trap(signal,initialValue);
-   return idt_gear(signal,initialValue);
+   

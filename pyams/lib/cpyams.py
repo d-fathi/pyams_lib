@@ -418,7 +418,7 @@ freq=param(0.0,'Hz','Freq')
 tnom=param(300.0,'K','Nominal temperature')
 temp=param(27.0,'°C','Temperature')
 
-time.name_='time';
+time.name_='time'
 temp.name_='temperature'
 freq.name_='freq'
 
@@ -436,6 +436,12 @@ from pyams.lib.dynamic import control
 from pyams.lib.progressbar import starTime, displayBar
 from pyams.lib.digital import dsignal,dcircuit
 
+try:
+    import numpy as np
+    from pyams.lib.unewton_numpy import solveNewtonNumPy
+    HAS_NUMPY = True
+except ImportError:
+    HAS_NUMPY = False
 
 
 class circuit:
@@ -453,6 +459,11 @@ class circuit:
         self.outputs=[]
         self.tempOutputs=[]
         self.dcircuit=dcircuit() # creat digitial circuit for add digital elements
+        self.useNumpy=HAS_NUMPY # used numpy to solve system electrics
+        if(HAS_NUMPY):
+            self.solveNewton=solveNewtonNumPy
+        else:
+            self.solveNewton=solven
 
     def addName(self, name: str, element: model):
         """
@@ -481,7 +492,7 @@ class circuit:
 
         lenElements=len(self.cir)
 
-        i=0;
+        i=0
 
         while (i<lenElements):
          attributes = dir(self.cir[i])
@@ -585,7 +596,10 @@ class circuit:
       self.vectorSize = self.numNodes+self.numSources
 
       # Initialize vector x with zeros
-      self.x = [0] * self.vectorSize
+      if self.useNumpy:
+          self.x = np.zeros(self.vectorSize)
+      else:
+          self.x = [0] * self.vectorSize
 
       return {
         "numNodes": self.numNodes,
@@ -617,10 +631,15 @@ class circuit:
       Args: x (list): A vector containing node potentials or other values.
       Returns: list: A vector `y` representing the evaluation results.
       """
-      x.insert(0, 0)  # Ensure ground node potential is included at index 0.
+      if self.useNumpy:
+        x = np.insert(x, 0, 0) # Ensure ground node potential is included at index 0.
+        y = np.zeros(self.vectorSize + 1)  # Initialize the output vector `y`.
+      else:
+        x.insert(0, 0)  # Ensure ground node potential is included at index 0.
+        y = [0] * (self.vectorSize+1)  # Initialize the output vector `y`.
+
       self.set(x)  # Update signals with the current vector `x`.
       numNodes = self.numNodes
-      y = [0] * (self.vectorSize+1)  # Initialize the output vector `y`.
 
       # Process output signals
       for itPotential, node1, node2, signal in self.outSignals:
@@ -637,8 +656,12 @@ class circuit:
             y[node1] += value
             y[node2] -= value
       # Remove the inserted ground node potential
-      y.pop(0)
-      x.pop(0)
+      if self.useNumpy:
+          y = np.delete(y, 0)
+          x = np.delete(x, 0)
+      else:
+          y.pop(0)
+          x.pop(0)
       # Update the circuit's current state
       self.x = x
       return y
@@ -654,11 +677,13 @@ class circuit:
 
 
     def getOpertingPoint(self):
-        self.x,s=solven(self.x,self.feval,self.option)
+        self.x,s=self.solveNewton(self.x,self.feval,self.option)
+        self.dcircuit.feval()
+        ''''
         self.dcircuit.feval();
         self.x,s=solven(self.x,self.feval,self.option)
         self.dcircuit.feval();
-
+        '''
         return self.x
 
     def setOutPuts(self,*outputs):

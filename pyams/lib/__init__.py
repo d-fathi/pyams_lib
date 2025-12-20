@@ -5,6 +5,7 @@ from .cpyams import *
 from .std import *
 from .options import *
 from .unewton import *
+from .unewton_numpy import *
 from .utils import *
 from .dynamic import *
 from .digital import *

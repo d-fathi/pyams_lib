@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BCD to 7-Segment Decoder &mdash; PyAMS Library 0.2.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css?v=45cf7dbc" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css?v=2a6c4383" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css?v=d290406d" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/logo_.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=a47416a6"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Source" href="../Source/index.html" />
+    <link rel="prev" title="2-to-4 Decoder" href="Decoder.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/logo_.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                PyAMS Lib 0.2.3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../Overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../News.html">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Release_History.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Installation.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Modeling.html">Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ModelingDigital.html">Digital Modeling with <code class="docutils literal notranslate"><span class="pre">dsignal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ParametersFunctions.html">Local parameters and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Simulation.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../Models.html">Models</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Analog/index.html">Analog Models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Digital Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Gate/index.html">Gate</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Combinational</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="HalfAdder.html">Half Adder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="FullAdder.html">Full Adder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Multiplexer2to1.html">2-to-1 Multiplexer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Multiplexer4to1.html">4-to-1 Multiplexer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Demultiplexer1to4.html">1-to-4 Demultiplexer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Demultiplexer1to2.html">1-to-2 Demultiplexer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Encoder.html">4-to-2 Priority Encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Decoder.html">2-to-4 Decoder</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">BCD to 7-Segment Decoder</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Source/index.html">Source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../DSignal.html">dsignal Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../WebPage.html">Web Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Donate.html">Support this project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyAMS Library</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../Models.html">Models</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Digital Models</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Combinational</a></li>
+      <li class="breadcrumb-item active">BCD to 7-Segment Decoder</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/d-fathi/pyams_lib/blob/main/docs/models/Digital/Combinational/7SegmentDecoder.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <style>
+  .red {
+  color:red;
+  font-weight: bold;
+     }
+
+            .pro {
+          background-color: lightblue;
+         }
+</style><section id="bcd-to-7-segment-decoder">
+<h1>BCD to 7-Segment Decoder<a class="headerlink" href="#bcd-to-7-segment-decoder" title="Link to this heading"></a></h1>
+<p><span class="red">Information</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/BCDto7Segment.png"><img alt="../../../_images/BCDto7Segment.png" src="../../../_images/BCDto7Segment.png" style="width: 121.5px; height: 150.5px;" />
+</a>
+</figure>
+<p>A <strong>BCD (Binary-Coded Decimal) to 7-Segment Decoder</strong> converts a 4-bit BCD input into signals that control a <strong>7-segment display</strong>, typically used to represent decimal digits from 0 to 9. Each of the 7 segments (labeled a–g) is driven high or low to form the appropriate numeral pattern.</p>
+<p><span class="red">Ports</span></p>
+<ul class="simple">
+<li><p><strong>B0</strong>, <strong>B1</strong>, <strong>B2</strong>, <strong>B3</strong>: BCD input bits (least to most significant)</p></li>
+<li><p><strong>a</strong> to <strong>g</strong>: Segment outputs controlling the display</p></li>
+</ul>
+<p><span class="red">Model</span></p>
+<p>The <strong>BCD7SegmentDecoder model</strong> decodes a 4-bit binary input into the corresponding pattern on a 7-segment display.</p>
+<blockquote>
+<div><p>Attributes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>B0–B3 (dsignal): 4-bit BCD inputs</p></li>
+<li><p>a–g (dsignal): Outputs to the display segments</p></li>
+</ul>
+</div></blockquote>
+<p>Methods:</p>
+<blockquote>
+<div><p>digital(): Maps BCD input to the correct segment pattern</p>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pyams.lib</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsignal</span><span class="p">,</span> <span class="n">model</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BCD7SegmentDecoder</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; BCD to 7-Segment Decoder &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">B0</span><span class="p">,</span> <span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">B3</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">B0</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">B0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">B1</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">B1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">B2</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">B2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">B3</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">B3</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">dsignal</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">digital</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Decode 4-bit BCD to 7-segment output &quot;&quot;&quot;</span>
+        <span class="n">b0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">B0</span>
+        <span class="n">b1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">B1</span>
+        <span class="n">b2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">B2</span>
+        <span class="n">b3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">B3</span>
+
+        <span class="c1"># Segment a</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+=</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b2</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b1</span> <span class="o">&amp;</span> <span class="n">b0</span> <span class="o">|</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="n">b2</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b1</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b0</span>
+        <span class="c1"># Segment b</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+=</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="n">b2</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b1</span> <span class="o">&amp;</span> <span class="n">b0</span> <span class="o">|</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="n">b2</span> <span class="o">&amp;</span> <span class="n">b1</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b0</span>
+        <span class="c1"># Segment c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">+=</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b2</span> <span class="o">&amp;</span> <span class="n">b1</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b0</span>
+        <span class="c1"># Segment d</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">+=</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="n">b2</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b1</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b0</span> <span class="o">|</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="n">b2</span> <span class="o">&amp;</span> <span class="n">b1</span> <span class="o">&amp;</span> <span class="n">b0</span>
+        <span class="c1"># Segment e</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">e</span> <span class="o">+=</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="n">b0</span> <span class="o">|</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="n">b2</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b1</span>
+        <span class="c1"># Segment f</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">+=</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b2</span> <span class="o">&amp;</span> <span class="n">b0</span> <span class="o">|</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b2</span> <span class="o">&amp;</span> <span class="n">b1</span>
+        <span class="c1"># Segment g</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">g</span> <span class="o">+=</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b2</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">b1</span> <span class="o">|</span> <span class="o">~</span><span class="n">b3</span> <span class="o">&amp;</span> <span class="n">b2</span> <span class="o">&amp;</span> <span class="n">b1</span> <span class="o">&amp;</span> <span class="n">b0</span>
+</pre></div>
+</div>
+<p><span class="red">Command syntax</span></p>
+<p>The <strong>syntax</strong> for defining a BCD to 7-segment decoder in a PyAMS simulation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyams.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">BCD7SegmentDecoder</span>
+
+<span class="c1"># Create the decoder instance</span>
+<span class="n">SEG</span> <span class="o">=</span> <span class="n">BCD7SegmentDecoder</span><span class="p">(</span><span class="n">B0</span><span class="p">,</span> <span class="n">B1</span><span class="p">,</span> <span class="n">B2</span><span class="p">,</span> <span class="n">B3</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Decoder.html" class="btn btn-neutral float-left" title="2-to-4 Decoder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Source/index.html" class="btn btn-neutral float-right" title="Source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021-2025, PyAMS Library.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

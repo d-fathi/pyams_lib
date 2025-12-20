@@ -10,7 +10,7 @@
 
 from pyams.lib import signal, model, param
 from pyams.lib import voltage, current
-from pyams.lib import explim
+from pyams.lib  import explim
 
 # Simple BJT (NPN) Model------------------------------------------------------
 class NPN(model):
