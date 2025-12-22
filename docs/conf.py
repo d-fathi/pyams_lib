@@ -23,7 +23,7 @@ author = 'd.fathi'
 
 # The full version, including alpha/beta/rc tags
 release ='0.2.4'
-version='PyAMS Lib 0.2.4'
+version='0.2.4'
 
 
 # -- General configuration ---------------------------------------------------
