@@ -83,9 +83,7 @@ What is `pyams.lib`?
 
     ---
 
-    :ref:`Donate <donate-page>`
 
-    If you would like to donate to the project for further professional support.
 
 
 *******************
@@ -106,6 +104,5 @@ Table of Contents
   DSignal.rst
   Examples.rst
   WebPage.rst
-  Donate.rst
 .. End
 
